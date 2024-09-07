@@ -1,12 +1,12 @@
 {
-  "name": "fastify-tmpl",
-  "version": "1.1.5",
-  "description": "Fastify API service template",
-  "homepage": "https://github.com/oleksii-honchar/fastify-tmpl/blob/main/README.md",
+  "name": "api",
+  "version": "0.0.0",
+  "description": "API service for Keycloak Stripe",
+  "homepage": "https://github.com/oleksii-honchar/rnd-keycloak-stripe/blob/main/README.md",
   "bugs": {
-    "url": "https://github.com/oleksii-honchar/fastify-tmpl/issues"
+    "url": "https://github.com/oleksii-honchar/rnd-keycloak-stripe/issues"
   },
-  "repository": "https://github.com/oleksii-honchar/fastify-tmpl",
+  "repository": "https://github.com/oleksii-honchar/rnd-keycloak-stripe",
   "license": "MIT",
   "author": "Oleksii Honchar <tuiteraz@gmail.com>",
   "main": "dist/src/index.js",
@@ -26,7 +26,7 @@
     "docker:run": "make docker-run",
     "dotenvx": "dotenvx run --env-file .env",
     "lint:check": "ESLINT_USE_FLAT_CONFIG=true eslint --config ./eslint.config.js --cache . --max-warnings 0",
-    "lint:fix": "pnpm lint --fix",
+    "lint:fix": "pnpm lint:check --fix",
     "prepare": "husky",
     "prettier:check": "prettier --check \"{src,test}/**/*.{ts,js,json,md}\"",
     "prettier:write": "prettier --write \"{src,test}/**/*.{ts,js,json,md}\"",

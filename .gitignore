@@ -3,17 +3,22 @@
 .idea
 .DS_Store
 .npmrc
+.history
+.turbo
+
 *.crt
 *.key
 *.pem
-npm-debug.log
 .env
+
+tsconfig.tsbuildinfo
+!jest.config.js
+
+npm-debug.log
 backup/*
 coverage
 dist/*
 logs
-.history
-!dist/.gitkeep
 node_modules/
 tmp
 
@@ -22,6 +27,3 @@ cdktf.log
 *terraform.*.tfstate*
 .gen
 .terraform
-tsconfig.tsbuildinfo
-!jest.config.js
-!setup.js

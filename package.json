@@ -14,6 +14,7 @@
     "ci": "turbo ci",
     "clean": "turbo clean",
     "clean:dist": "turbo clean:dist",
+    "code:fix": "turbo code:fix",
     "debug": "NODE_ENV=development dotenvx run -- turbo debug --continue --concurrency=3",
     "debug:json-logs": "NODE_ENV=development dotenvx run -- turbo debug:json-logs --continue --concurrency=3",
     "dev": "NODE_ENV=development dotenvx run -- turbo dev --continue --concurrency=3",
@@ -29,7 +30,8 @@
     "husky": "catalog:"
   },
   "devDependencies": {
-    "@dotenvx/dotenvx": "catalog:"
+    "@dotenvx/dotenvx": "catalog:",
+    "turbo": "^2.1.1"
   },
   "packageManager": "pnpm@9.9.0",
   "engines": {
