@@ -1,0 +1,38 @@
+{
+  "name": "rnd-keycloak-stripe-app",
+  "version": "0.0.0",
+  "description": "RND Keycloak Stripe App",
+  "homepage": "https://github.com/oleksii-honchar/rnd-keycloak-stripe-app/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/oleksii-honchar/rnd-keycloak-stripe-app/issues"
+  },
+  "repository": "https://github.com/oleksii-honchar/rnd-keycloak-stripe-app",
+  "license": "MIT",
+  "author": "Oleksii Honchar <tuiteraz@gmail.com>",
+  "scripts": {
+    "build": "turbo build",
+    "ci": "turbo ci",
+    "clean": "turbo clean",
+    "clean:dist": "turbo clean:dist",
+    "debug": "NODE_ENV=development dotenvx run -- turbo debug --continue --concurrency=3",
+    "debug:json-logs": "NODE_ENV=development dotenvx run -- turbo debug:json-logs --continue --concurrency=3",
+    "dev": "NODE_ENV=development dotenvx run -- turbo dev --continue --concurrency=3",
+    "dev:json-logs": "NODE_ENV=development dotenvx run -- turbo dev:json-logs --continue --concurrency=3",
+    "dotenvx": "dotenvx run --env-file .env",
+    "lint:check": "turbo lint:check",
+    "lint:fix": "turbo lint:fix",
+    "prepare": "husky",
+    "sort-package-json": "npx sort-package-json",
+    "test": "turbo test"
+  },
+  "dependencies": {
+    "husky": "catalog:"
+  },
+  "devDependencies": {
+    "@dotenvx/dotenvx": "catalog:"
+  },
+  "packageManager": "pnpm@9.9.0",
+  "engines": {
+    "node": "^22"
+  }
+}

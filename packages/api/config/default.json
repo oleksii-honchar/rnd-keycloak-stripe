@@ -1,0 +1,11 @@
+{
+  "deployment": {
+    "containerName": "rnd-keycloak-stripe-api",
+    "imageName": "tuiteraz/rnd-keycloak-stripe-api"
+  },
+  "runtime": {
+    "environment": "development",
+    "logLevel": "debug",
+    "port": 8010
+  }
+}
