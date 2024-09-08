@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { AppConfig } from "src/typings/index.d.ts";
+import type { AppConfig } from "src/typings";
 
 export const appConfig: AppConfig = {
   name: process.env.PKG_NAME as string,

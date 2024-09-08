@@ -1,5 +1,5 @@
-import { StringIndex } from "src/typings/index.js";
-import { classNames } from "src/utils/classNames.ts";
+import { StringIndex } from "src/typings";
+import { classNames } from "src/utils/classNames";
 
 function SingleCrumb({ item, keyId, isLast }: StringIndex) {
   return (

@@ -1,13 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme");
-const pino = require("pino");
+import pino from 'pino';
+import defaultTheme from 'tailwindcss/defaultTheme';
+import m3DesignTokensColors from './src/stylesheets/md3-design-tokens-v2.json' with { type: 'json' };
 
-const m3DesignTokensV1 = require("./src/stylesheets/md3-design-tokens-v2.ts");
-
-const logger = pino({ name: "tailwind-css:config" });
+const logger = pino.default({ name: "tailwind-css:config" });
 logger.info("loading config");
 
-module.exports = {
+export default {
   corePlugins: {
     animation: true,
     translate: true,
@@ -17,7 +16,7 @@ module.exports = {
   },
   theme: {
     extend: {
-      colors: m3DesignTokensV1.colors,
+      colors: m3DesignTokensColors,
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },

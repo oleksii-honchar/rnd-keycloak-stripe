@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
+
 export function Logo() {
   return (
     <div className="flex flex-shrink-0 items-center">

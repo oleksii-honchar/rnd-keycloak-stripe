@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
-import { classNames } from "src/utils/classNames.ts";
 import { Disclosure } from "@headlessui/react";
 import { useContext } from "react";
-import { NavigationContext } from "src/contexts/NavigationContext.tsx";
+import { NavLink } from "react-router-dom";
+import { NavigationContext } from "src/contexts/NavigationContext";
+import { classNames } from "src/utils/classNames";
 
 export function PageMobileNavItems() {
   const { navItems } = useContext(NavigationContext);

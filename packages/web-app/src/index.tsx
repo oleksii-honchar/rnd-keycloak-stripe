@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 // @ts-ignore
 import { LoggerService } from "@ciklum/logan";
 
-import { Root } from "src/containers/Root/Root.tsx";
+import { Root } from "src/containers/Root/Root";
 
 LoggerService.setGlobalTitle(process.env.PKG_NAME);
 

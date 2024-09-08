@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from "react";
-import type { NavigationItem } from "src/typings/index.d.ts";
+import type { NavigationItem } from "src/typings";
 interface NavigationContextProps {
   navItems?: NavigationItem[];
   children?: ReactNode[];

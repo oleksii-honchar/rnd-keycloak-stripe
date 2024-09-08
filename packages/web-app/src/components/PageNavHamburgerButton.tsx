@@ -1,11 +1,11 @@
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline/index.js";
-import { Disclosure } from "@headlessui/react";
+import { DisclosureButton } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 
 export function PageNavHamburgerButton({ open = false, ...props }) {
   return (
     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-      <Disclosure.Button
+      <DisclosureButton
         className={`
         inline-flex items-center justify-center rounded-md p-2 
         text-md3-sys-light-on-surface/80 
@@ -20,7 +20,7 @@ export function PageNavHamburgerButton({ open = false, ...props }) {
         ) : (
           <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
         )}
-      </Disclosure.Button>
+      </DisclosureButton>
     </div>
   );
 }

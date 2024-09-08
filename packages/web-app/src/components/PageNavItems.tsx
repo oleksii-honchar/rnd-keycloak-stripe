@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { classNames } from "src/utils/classNames.ts";
-import { NavigationContext } from "src/contexts/NavigationContext.tsx";
+import { NavLink } from "react-router-dom";
+
+import { NavigationContext } from "src/contexts/NavigationContext";
+import { classNames } from "src/utils/classNames";
 
 export function PageNavItems() {
   const { navItems } = useContext(NavigationContext);
@@ -9,7 +10,7 @@ export function PageNavItems() {
   return (
     <div className="hidden sm:block absolute right-0">
       <div className="flex space-x-4">
-        {navItems.map((item) => (
+        {navItems!.map((item) => (
           <NavLink
             key={item.name}
             to={item.path}

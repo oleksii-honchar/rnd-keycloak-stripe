@@ -1,3 +1,21 @@
 {
-  "extends": "./../.configs/tsconfig.es2022.json"
+  "extends": "./../tsconfig.es2022.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "src/*": [ "../src/*" ],
+      "scripts/*": [ "../scripts/*" ],
+      "package.json": ["../package.json"]
+    }
+  },
+  "include": [
+    "./**/*"
+  ],
+  "exclude": [
+    "./node_modules",
+    "./dist",
+    "./docs",
+    "./coverage",
+    "./assets"
+  ]
 }

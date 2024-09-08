@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 
-import { PageNavbar } from "src/components/PageNavbar.tsx";
-import { Footer } from "src/components/Footer.tsx";
-import { ScrollToTop } from "src/components/ScrollToTop.tsx";
-import { ScrollDownIndicator } from "src/components/ScrollDownIndicator.tsx";
+import { Footer } from "src/components/Footer";
+import { PageNavbar } from "src/components/PageNavbar";
+import { ScrollDownIndicator } from "src/components/ScrollDownIndicator";
+import { ScrollToTop } from "src/components/ScrollToTop";
 
 export function Layout({}) {
   return (

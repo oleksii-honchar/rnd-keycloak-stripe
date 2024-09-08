@@ -5,13 +5,14 @@ import pino from "pino";
 import { getRootRepoDir } from "../../scripts/esm-utils.ts";
 import type { StringIndex } from "../../src/typings/index.d.ts";
 
+import tailwindConfig from "../../tailwind.config.ts";
+
 const require = createRequire(import.meta.url);
 const logger = pino.default({ name: "post-css:config" });
 logger.info("loading config");
 
 export default function postCssConfig(params: { file: any; options: StringIndex; env: any }) {
-  const tailwindConfigPath = path.join(getRootRepoDir(), "tailwind.config.cjs");
-  const tailwind = require("tailwindcss")(require(tailwindConfigPath));
+  const tailwind = require("tailwindcss")(tailwindConfig);
 
   const mdlPostCssImport = require("postcss-import");
   const postCssImport = mdlPostCssImport({ root: path.dirname(params?.file) });

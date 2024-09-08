@@ -1,5 +1,6 @@
 import { FaCopyright } from "react-icons/fa";
 import moment from "moment";
+
 export function Footer() {
   return (
     <div

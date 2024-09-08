@@ -1,9 +1,9 @@
 import { Disclosure } from "@headlessui/react";
-import { Logo } from "./Logo.tsx";
-import { PageNavHamburgerButton } from "./PageNavHamburgerButton.tsx";
-import { PageMobileNavItems } from "./PageMobileNavItems.tsx";
-import { PageNavItems } from "./PageNavItems.tsx";
-import { Title } from "./Title.tsx";
+import { Logo } from "./Logo";
+import { PageMobileNavItems } from "./PageMobileNavItems";
+import { PageNavHamburgerButton } from "./PageNavHamburgerButton";
+import { PageNavItems } from "./PageNavItems";
+import { Title } from "./Title";
 
 export function PageNavbar() {
   return (

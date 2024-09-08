@@ -1,15 +1,15 @@
-import type { StringIndex } from "src/typings/index.d.ts";
+import { Breadcrumbs } from "src/components/Breadcrumbs";
+import type { StringIndex } from "src/typings";
+import { classNames } from "src/utils/classNames";
 import {
+  errorShades,
   keyColors,
+  neutralShades,
+  neutralVShades,
   paletteColors,
   primaryShades,
   secondaryShades,
-  errorShades,
-  neutralShades,
-  neutralVShades,
-} from "./palette-page.data.ts";
-import { Breadcrumbs } from "src/components/Breadcrumbs.tsx";
-import { classNames } from "src/utils/classNames.ts";
+} from "./palette-page.data";
 
 function ColorHashText({ color, toShowOnHover }: StringIndex) {
   return (
@@ -66,7 +66,7 @@ function KeyColor({ name, textColor, bgColor, colorHash }: StringIndex) {
 function PaletteColorPair({ colorPair }: StringIndex) {
   return (
     <div className="flex flex-col w-full">
-      {colorPair.map((color, idx) => (
+      {colorPair.map((color: StringIndex, idx: number) => (
         <PaletteColor key={`col-pair-${idx}`} {...color} />
       ))}
     </div>
@@ -117,7 +117,7 @@ function ColorShade({ name, textColor, bgColor, colorHash, shadeName }: StringIn
 function PaletteColorCol({ colorCol }: StringIndex) {
   return (
     <div className="flex flex-col w-full gap-2">
-      {colorCol.map((colorPair, idx) => (
+      {colorCol.map((colorPair: StringIndex, idx: number) => (
         <PaletteColorPair key={`col-pair-${idx}`} colorPair={colorPair} />
       ))}
     </div>

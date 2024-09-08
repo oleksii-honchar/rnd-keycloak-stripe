@@ -20,7 +20,7 @@ declare module "*.css" {
 declare module "@ciklum/logan";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type StringIndex = Record<string, any>;
+export type StringIndex = Record<PropertyKey, any>;
 
 export type NavigationItem = {
   name: string;

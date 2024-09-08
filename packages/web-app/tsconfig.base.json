@@ -3,6 +3,7 @@
     // Base Options
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": false,
     "esModuleInterop": true,
     "importHelpers": true,
     "isolatedModules": true,

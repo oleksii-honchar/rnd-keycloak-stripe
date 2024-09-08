@@ -1,5 +1,6 @@
-import { nl } from "src/utils/native-lodash.ts";
-import * as palette from "src/stylesheets/md3-design-tokens-v1.ts";
+import { nl } from "src/utils/native-lodash";
+
+import palette from "src/stylesheets/md3-design-tokens-v2.json" with { type: "json" };
 
 export const keyColors = [
   {
