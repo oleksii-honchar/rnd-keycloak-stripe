@@ -1,6 +1,6 @@
 import { lazy, ReactElement, Suspense } from "react";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import { BigSpinner } from "src/components/BigSpinner";
 import { ErrorBoundary } from "src/components/ErrorBoundary";
 import { NavContextProvider } from "src/contexts/NavigationContext";

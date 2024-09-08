@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import pino from 'pino';
+// @ts-expect-error this is recommended way but TS complains
 import defaultTheme from 'tailwindcss/defaultTheme';
 import m3DesignTokensColors from './src/stylesheets/md3-design-tokens-v2.json' with { type: 'json' };
 
