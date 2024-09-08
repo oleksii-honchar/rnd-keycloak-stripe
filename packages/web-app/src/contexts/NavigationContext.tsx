@@ -20,7 +20,9 @@ const navCtxInitial: NavigationContextProps = {
 
 export const NavigationContext = createContext(navCtxInitial);
 
-export const NavContextProvider = ({ children }: NavigationContextProviderProps) => {
+export const NavContextProvider = ({
+  children,
+}: NavigationContextProviderProps) => {
   return (
     <NavigationContext.Provider value={navCtxInitial}>
       {Array.isArray(children) ? children : [children]}
