@@ -1,8 +1,9 @@
 import config from "config";
 import pino from "pino";
+import type { Configuration, WebpackPluginInstance } from "webpack";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { merge } from "webpack-merge";
 
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { baseConfig } from "./webpack/base.config.ts";
 import { devServerConfig } from "./webpack/dev-server.config.ts";
 import { externalsConfig } from "./webpack/externals.config.ts";

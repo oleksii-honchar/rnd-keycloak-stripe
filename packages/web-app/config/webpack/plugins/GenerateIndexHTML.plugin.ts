@@ -1,5 +1,5 @@
 import pino from "pino";
-import webpack from "webpack";
+import webpack, { WebpackPluginInstance } from "webpack";
 
 import { generateIndexHtml } from "../libs/generateIndexHtml.ts";
 
@@ -7,11 +7,13 @@ const { Compilation, sources } = webpack;
 
 const logger = pino.default({ name: "plugin:GenerateIndexHTML" });
 
-export default class GenerateIndexHTML {
+export default class GenerateIndexHTML implements WebpackPluginInstance {
   env = [];
+
   constructor(env: any = {}) {
     this.env = env;
   }
+
   apply(compiler: any) {
     compiler.hooks.thisCompilation.tap("Replace", (compilation: any) => {
       compilation.hooks.processAssets.tap(
