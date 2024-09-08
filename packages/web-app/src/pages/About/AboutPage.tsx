@@ -66,60 +66,6 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
-      <div
-        id="second-section-wrapper"
-        className={`
-            w-full flex flex-col items-center
-            bg-[radial-gradient(ellipse_90%_40%_at_25%_15%,_var(--tw-gradient-stops))] 
-            from-md3-ref-primary-primary99 to-md3-ref-primary-primary90
-            bg-contain bg-no-repeat bg-top
-          `}
-      >
-        <section
-          className={`
-          pl-4 flex flex-col h-screen justify-center max-h-[920px] max-w-2xl md:max-w-3xl lg:max-w-5xl w-full
-        `}
-        >
-          <div className="container mx-auto text-left">
-            <h1 className="text-3xl font-medium mb-6">Brief tools & setup description</h1>
-            <div className="flex items-start gap-2">
-              <div className="w-1/2 backdrop-blur-md bg-md3-ref-neutral-neutral98/70 text-md3-sys-light-on-secondary-container rounded-lg p-2">
-                <h2 className="text-xl font-medium mb-6">Build & Configuration</h2>
-                <ul className="list-disc list-inside">
-                  <li>project.env file and environments configs</li>
-                  <li>Latest TypeScript & separate configs for node, es2016 and es2022</li>
-                  <li>ESM modules both for node and react configured using custom loader</li>
-                  <li>ESLint + Prettier(as plugin) for React and Node</li>
-                  <li>Husky + Cimmitizen github hooks</li>
-                  <li>Custom WebPack TS wrapper</li>
-                  <li>
-                    Extended WebPack config including:
-                    <ul className="list-disc list-inside ml-4">
-                      <li>post-css + TailWindCSS</li>
-                      <li>purge-css, prune licenses and fund requests</li>
-                      <li>Custom index.html based on HandleBars</li>
-                      <li>"es-build" TS loader</li>
-                    </ul>
-                  </li>
-                  <li>Code Splitting and route async loading</li>
-                  <li>[TBD] Terraform based deploy to AWS</li>
-                </ul>
-              </div>
-              <div className="w-1/2 backdrop-blur-md bg-md3-ref-neutral-neutral98/70 text-md3-sys-light-on-secondary-container rounded-lg p-2">
-                <h2 className="text-xl font-medium mb-6">Web App Modules</h2>
-                <ul className="list-disc list-inside">
-                  <li>React + React-Router</li>
-                  <li>TailWindCSS with MaterialDesign v3 Palette Tokens</li>
-                  <li>[TBD] MD3 colors in TailWindCSS color palette notation</li>
-                  <li>[TBD] XState example</li>
-                  <li>[TBD] unit testing</li>
-                  <li>[TBD] e2e testing</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
     </article>
   );
 }

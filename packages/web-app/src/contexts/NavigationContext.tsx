@@ -6,7 +6,7 @@ interface NavigationContextProps {
 }
 
 interface NavigationContextProviderProps {
-  children?: ReactNode[];
+  children: ReactNode | ReactNode[];
 }
 
 const navigationItemsInitial: NavigationItem[] = [
@@ -20,6 +20,10 @@ const navCtxInitial: NavigationContextProps = {
 
 export const NavigationContext = createContext(navCtxInitial);
 
-export function NavContextProvider({ children }: NavigationContextProviderProps) {
-  return <NavigationContext.Provider value={navCtxInitial}>{children}</NavigationContext.Provider>;
-}
+export const NavContextProvider = ({ children }: NavigationContextProviderProps) => {
+  return (
+    <NavigationContext.Provider value={navCtxInitial}>
+      {Array.isArray(children) ? children : [children]}
+    </NavigationContext.Provider>
+  );
+};
