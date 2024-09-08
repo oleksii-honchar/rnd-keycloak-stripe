@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
-const { blablo } = require("./scripts/blablo.ts");
+const pino = require("pino");
 
 const m3DesignTokensV1 = require("./src/stylesheets/md3-design-tokens-v2.ts");
 
-const logHeader = "[tailwind-css:config]".cyan;
-blablo.log(logHeader, "loading config").finish();
+const logger = pino({ name: "tailwind-css:config" });
+logger.info("loading config");
 
 module.exports = {
   corePlugins: {

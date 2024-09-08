@@ -1,5 +1,5 @@
 type PickInput = {
-  [key: string]: any;
+  [key: PropertyKey]: any;
 };
 
 export function pick(

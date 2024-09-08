@@ -2,27 +2,24 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "allowImportingTsExtensions": true,
     "paths": {
       "src/*": [ "./src/*" ],
       "scripts/*": [ "./scripts/*" ],
       "package.json": ["./package.json"]
     },
-    "noEmit": true
+    "module": "esnext",
+    "target": "ES2022",
   },
   "include": [
-    "./**/*.ts",
-    "./**/*.d.ts",
-    "./**/*.tsx",
+    "./src/**/*"
   ],
   "exclude": [
     "./node_modules",
+    "./configs",
     "./dist",
     "./docs",
     "./coverage",
     "./devops",
-    "./src/assets",
-    "./**/*.js"
+    "./src/assets"
   ]
 }
-  

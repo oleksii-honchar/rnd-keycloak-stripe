@@ -17,7 +17,7 @@ tsconfig.tsbuildinfo
 npm-debug.log
 backup/*
 coverage
-dist/*
+**/dist/*
 logs
 node_modules/
 tmp

@@ -1,16 +1,17 @@
 import path from "path";
-import { getRootRepoDir } from "scripts/esm-utils.ts";
-import { blablo } from "blablo";
+import pino from "pino";
 
-const logHeader = "[webpack:config:snippet]".cyan;
-blablo.log(logHeader, "loading", "'Module'".white.bold).finish();
+import { getRootRepoDir } from "../../scripts/esm-utils.ts";
+
+const logger = pino.default({ name: "webpack:config:snippet:module" });
+logger.info("loading 'Module'");
 
 export const moduleConfig = (env: any = {}) => {
   let tsLoaderCfg: any = {
     test: /\.([cm]?ts|tsx)$/,
     exclude: [/\.(spec|e2e|d)\.[tj]sx?$/],
   };
-  const tsConfigFilePath = path.join(getRootRepoDir(), `./.configs/tsconfig.${env.TS_TARGET}.json`);
+  const tsConfigFilePath = path.join(getRootRepoDir(), `./tsconfig.${env.TS_TARGET}.json`);
 
   switch (env.TS_LOADER) {
     case "esbuild":
@@ -34,7 +35,7 @@ export const moduleConfig = (env: any = {}) => {
       break;
   }
 
-  blablo.cleanLog(logHeader, "'Module'".white.bold, "❱", `using "${env.TS_LOADER.white.bold}" loader`);
+  logger.info(`'Module' ❱ using "${env.TS_LOADER}" loader`);
   return {
     module: {
       rules: [

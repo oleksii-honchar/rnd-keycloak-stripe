@@ -1,12 +1,12 @@
+import pino from "pino";
 import webpack from "webpack";
 
-import colors from "colors";
 import { generateIndexHtml } from "../libs/generateIndexHtml.ts";
-import { blablo } from "blablo";
 
 const { Compilation, sources } = webpack;
 
-colors.enable();
+const logger = pino.default({ name: "plugin:GenerateIndexHTML" });
+
 export default class GenerateIndexHTML {
   env = [];
   constructor(env: any = {}) {
@@ -20,15 +20,11 @@ export default class GenerateIndexHTML {
           stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE,
         },
         () => {
-          blablo.log(
-            "[GenerateIndexHTML:plugin]".cyan,
-            "processing asset",
-            "index.hbs".green.bold,
-            " ❱",
-            "dist/index.html".green.bold,
+          logger.info(
+            "processing asset index.hbs ❱ dist/index.html",
           );
           generateIndexHtml(this.env);
-          blablo.finish();
+          logger.info("Done ✨");
         },
       );
     });

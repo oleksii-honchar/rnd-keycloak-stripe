@@ -38,6 +38,7 @@
     "ts:compile": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json"
   },
   "dependencies": {
+    "@types/config": "catalog:",
     "ajv": "catalog:",
     "config": "catalog:",
     "fastify": "catalog:api",
@@ -51,7 +52,6 @@
     "@faker-js/faker": "catalog:",
     "@tsconfig/node22": "catalog:",
     "@tsconfig/recommended": "catalog:",
-    "@types/config": "catalog:",
     "@types/eslint__js": "catalog:",
     "@types/node": "catalog:",
     "eslint": "catalog:",

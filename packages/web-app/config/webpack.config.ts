@@ -1,21 +1,23 @@
+import config from "config";
+import pino from "pino";
 import { merge } from "webpack-merge";
-import colors from "colors";
-import { blablo } from "blablo";
 
-import pkg from "package.json" assert { type: "json" };
-
-import { baseConfig } from "./webpack/base.config.ts";
-import { moduleConfig } from "./webpack/module.config.ts";
-import { cssModuleConfig } from "./webpack/module-css.config.ts";
-import { devServerConfig } from "./webpack/dev-server.config.ts";
-import { prodConfig } from "./webpack/prod.config.ts";
-import { externalsConfig } from "./webpack/externals.config.ts";
-import GenerateIndexHTML from "./webpack/plugins/GenerateIndexHTML.plugin.ts";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import { baseConfig } from "./webpack/base.config.ts";
+import { devServerConfig } from "./webpack/dev-server.config.ts";
+import { externalsConfig } from "./webpack/externals.config.ts";
+import { cssModuleConfig } from "./webpack/module-css.config.ts";
+import { moduleConfig } from "./webpack/module.config.ts";
+import GenerateIndexHTML from "./webpack/plugins/GenerateIndexHTML.plugin.ts";
+import { prodConfig } from "./webpack/prod.config.ts";
 
-colors.enable();
-const logHeader = "[webpack:config]".cyan;
-blablo.cleanLog(logHeader, `starting "${pkg.name}" config composition`);
+const logger = pino.default({
+  level: "info",
+  name: "webpack:config",
+});
+logger.info("Starting config composition");
+
+const nodeEnv = config.get("runtime.environment");
 
 // Short usage reference
 // `NODE_ENV` = development | test | production
@@ -23,15 +25,12 @@ blablo.cleanLog(logHeader, `starting "${pkg.name}" config composition`);
 
 export const configFactory = (env: any = {}, argv: { mode: string; launchServer?: boolean }) => {
   env = {
-    NODE_ENV: "development",
     BUILD_ANALYZE: null,
     TS_LOADER: "esbuild", // or ts-build
     ...env,
   };
 
-  blablo.cleanLog(logHeader, `using "${env.NODE_ENV}" mode`);
-  // blablo.cleanLog(env);
-  // blablo.cleanLog(argv);
+  logger.info(`using "${nodeEnv}" mode`);
 
   const envES2022 = { ...env, TS_TARGET: "es2022" };
 
@@ -49,7 +48,7 @@ export const configFactory = (env: any = {}, argv: { mode: string; launchServer?
     cfgES2022 = merge(cfgES2022, {
       // @ts-ignore
       entry: {
-        dummy: "./.configs/webpack/dummy-entry.ts",
+        dummy: "./config/webpack/dummy-entry.ts",
       },
     });
   } else {
@@ -63,7 +62,7 @@ export const configFactory = (env: any = {}, argv: { mode: string; launchServer?
   }
 
   if (env.BUILD_ANALYZE === "true") {
-    console.log(logHeader, "bundle analyzer included");
+    logger.info(`bundle analyzer included`);
     // @ts-ignore
     cfgES2022 = merge(cfgES2022, {
       plugins: [new BundleAnalyzerPlugin(env)],
@@ -71,7 +70,7 @@ export const configFactory = (env: any = {}, argv: { mode: string; launchServer?
   }
 
   if (env.NODE_ENV !== "production" || argv.launchServer === true) {
-    blablo.cleanLog("[webpack:config]".cyan, "config composition completed");
+    logger.info(`config composition completed`);
     return cfgES2022;
   }
 
@@ -92,6 +91,6 @@ export const configFactory = (env: any = {}, argv: { mode: string; launchServer?
   // @ts-ignore
   configs = configs.map((cfg) => merge(cfg, prodConfig));
 
-  blablo.cleanLog("[webpack:config]".cyan, "config composition completed");
+  logger.info(`config composition completed`);
   return configs;
 };

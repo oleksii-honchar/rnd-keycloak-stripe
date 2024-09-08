@@ -1,7 +1,7 @@
 import fs from "fs";
-import path from "path";
 import hbs from "handlebars";
-import { getRootRepoDir } from "scripts/esm-utils.ts";
+import path from "path";
+import { getRootRepoDir } from "../../../scripts/esm-utils.ts";
 
 export function generateIndexHtml(env: any = {}) {
   const data = {

@@ -1,12 +1,14 @@
+import config from "config";
 import path from "path";
-import { blablo } from "blablo";
-import { getRootRepoDir } from "scripts/esm-utils.ts";
+import pino from "pino";
 
-const logHeader = "[webpack:config:snippet]".cyan;
-blablo.log(logHeader, "loading", "'DevServer'".white.bold).finish();
+import { getRootRepoDir } from "../../scripts/esm-utils.ts";
+
+const logger = pino.default({ name: "webpack:config:snippet:dev-server" });
+logger.info("loading 'DevServer'");
 
 export const devServerConfig = (env: any) => {
-  blablo.cleanLog(logHeader, `Base: processing "${env.TS_TARGET}" config`);
+  logger.info(`Preparing "DevServer" config`);
 
   return {
     devServer: {
@@ -19,7 +21,7 @@ export const devServerConfig = (env: any) => {
         publicPath: "/",
       },
       historyApiFallback: true,
-      port: env.SERVE_PORT,
+      port: config.get("runtime.port"),
       static: path.join(getRootRepoDir(), "./dist"),
     },
   };

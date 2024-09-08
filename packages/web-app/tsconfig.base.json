@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    // Base Options
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmitOnError": false,
+    "skipLibCheck": true,
+    "target": "esnext",
+    "resolveJsonModule": true,
+
+    // Extras
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    // Strictness
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "strict": true,
+
+    // Transpilation
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "sourceMap": true,
+
+    // Build
+    "lib": [ "DOM", "esnext"],
+    "noImplicitAny": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "removeComments": true,
+    "types": ["node"]
+  }
+}

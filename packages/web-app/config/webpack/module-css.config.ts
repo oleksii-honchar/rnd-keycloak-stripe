@@ -1,15 +1,17 @@
+import config from "config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import path from "path";
-import { getRootRepoDir } from "scripts/esm-utils.ts";
-import { blablo } from "blablo";
+import pino from "pino";
 
-const logHeader = "[webpack:config:snippet]".cyan;
-blablo.log(logHeader, "loading", "'Module-CSS'".white.bold).finish();
+import { getRootRepoDir } from "../../scripts/esm-utils.ts";
+
+const logger = pino.default({ name: "webpack:config:snippet:module-css" });
+logger.info("loading 'Module-CSS'");
+
+const nodeEnv = config.get("runtime.environment");
 
 export const cssModuleConfig = (env: any) => {
-  const isProd = env.NODE_ENV === "production";
-
-  const postCssConfigPath = path.join(getRootRepoDir(), "./.configs/webpack/postcss.config.ts");
+  const postCssConfigPath = path.join(getRootRepoDir(), "./config/webpack/postcss.config.ts");
 
   const plugins = [
     new MiniCssExtractPlugin({
@@ -56,7 +58,7 @@ export const cssModuleConfig = (env: any) => {
               options: {
                 postcssOptions: {
                   ctx: {
-                    env: env.NODE_ENV,
+                    env: nodeEnv,
                   },
                   config: postCssConfigPath,
                 },

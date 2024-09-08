@@ -1,14 +1,13 @@
-import path from "path";
 import { createRequire } from "module";
+import path from "path";
+import pino from "pino";
 
-// import { purgeCssConfig } from "./purgecss.config.ts";
-import { blablo } from "../../scripts/blablo.ts";
-import type { StringIndex } from "../../src/typings/index.d.ts";
 import { getRootRepoDir } from "../../scripts/esm-utils.ts";
+import type { StringIndex } from "../../src/typings/index.d.ts";
 
 const require = createRequire(import.meta.url);
-const logHeader = "[post-css:config]".cyan;
-blablo.log(logHeader, "loading config").finish();
+const logger = pino.default({ name: "post-css:config" });
+logger.info("loading config");
 
 export default function postCssConfig(params: { file: any; options: StringIndex; env: any }) {
   const tailwindConfigPath = path.join(getRootRepoDir(), "tailwind.config.cjs");

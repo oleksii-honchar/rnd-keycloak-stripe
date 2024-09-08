@@ -1,0 +1,11 @@
+{
+  "deployment": {
+    "containerName": "rnd-keycloak-stripe-app",
+    "imageName": "tuiteraz/rnd-keycloak-stripe-app"
+  },
+  "runtime": {
+    "environment": "development",
+    "logLevel": "debug",
+    "port": 8000
+  }
+}
