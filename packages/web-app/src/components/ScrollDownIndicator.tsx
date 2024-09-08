@@ -9,7 +9,7 @@ export function ScrollDownIndicator() {
       document.body.offsetHeight,
       document.documentElement.clientHeight,
       document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
+      document.documentElement.offsetHeight,
     );
     const currScrollOffset = window.innerHeight + window.scrollY;
     const currDiffWithMaxHeight = maxHeight - currScrollOffset;

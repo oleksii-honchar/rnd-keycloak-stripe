@@ -32,7 +32,7 @@ export function PageMobileNavItems() {
                       hover:text-md3-sys-light-on-primary/90
                       hover:bg-md3-ref-primary-primary40/40
                     `,
-                  "block rounded-full px-3 py-2 text-base font-medium"
+                  "block rounded-full px-3 py-2 text-base font-medium",
                 );
               }}
             >

@@ -72,7 +72,13 @@ function PaletteColorPair({ colorPair }: StringIndex) {
     </div>
   );
 }
-function PaletteColor({ name, textColor, bgColor, colorHash, shadeName }: StringIndex) {
+function PaletteColor({
+  name,
+  textColor,
+  bgColor,
+  colorHash,
+  shadeName,
+}: StringIndex) {
   return (
     <div
       className={`
@@ -92,7 +98,13 @@ function PaletteColor({ name, textColor, bgColor, colorHash, shadeName }: String
     </div>
   );
 }
-function ColorShade({ name, textColor, bgColor, colorHash, shadeName }: StringIndex) {
+function ColorShade({
+  name,
+  textColor,
+  bgColor,
+  colorHash,
+  shadeName,
+}: StringIndex) {
   return (
     <div
       className={`
@@ -157,27 +169,42 @@ export default function PalettePage() {
               <div className="flex items-stretch w-full gap-2 justify-between">
                 <div className="flex flex-col w-full max-w-[20%]">
                   {primaryShades.map((shadeColor, idx) => (
-                    <ColorShade key={`primary-shade-col-${idx}`} {...shadeColor} />
+                    <ColorShade
+                      key={`primary-shade-col-${idx}`}
+                      {...shadeColor}
+                    />
                   ))}
                 </div>
                 <div className="flex flex-col  w-full max-w-[20%]">
                   {secondaryShades.map((shadeColor, idx) => (
-                    <ColorShade key={`secondary-shade-col-${idx}`} {...shadeColor} />
+                    <ColorShade
+                      key={`secondary-shade-col-${idx}`}
+                      {...shadeColor}
+                    />
                   ))}
                 </div>
                 <div className="flex flex-col  w-full max-w-[20%]">
                   {errorShades.map((shadeColor, idx) => (
-                    <ColorShade key={`error-shade-col-${idx}`} {...shadeColor} />
+                    <ColorShade
+                      key={`error-shade-col-${idx}`}
+                      {...shadeColor}
+                    />
                   ))}
                 </div>
                 <div className="flex flex-col  w-full max-w-[20%]">
                   {neutralShades.map((shadeColor, idx) => (
-                    <ColorShade key={`neutral-shade-col-${idx}`} {...shadeColor} />
+                    <ColorShade
+                      key={`neutral-shade-col-${idx}`}
+                      {...shadeColor}
+                    />
                   ))}
                 </div>
                 <div className="flex flex-col w-full max-w-[20%]">
                   {neutralVShades.map((shadeColor, idx) => (
-                    <ColorShade key={`neutral-v-shade-col-${idx}`} {...shadeColor} />
+                    <ColorShade
+                      key={`neutral-v-shade-col-${idx}`}
+                      {...shadeColor}
+                    />
                   ))}
                 </div>
               </div>

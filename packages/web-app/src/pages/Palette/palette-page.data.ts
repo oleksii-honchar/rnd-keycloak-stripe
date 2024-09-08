@@ -99,7 +99,10 @@ export const paletteColors = [
         name: "On Secondary Container",
         bgColor: "bg-md3-sys-light-on-secondary-container",
         textColor: "text-md3-sys-light-on-secondary",
-        colorHash: nl.get(palette, "colors.md3.sys.light.on-secondary-container"),
+        colorHash: nl.get(
+          palette,
+          "colors.md3.sys.light.on-secondary-container",
+        ),
         shadeName: "S-10",
       },
     ],
@@ -420,7 +423,10 @@ export const neutralShades = [
     name: "Surf. Cntr. Highest",
     bgColor: "bg-md3-sys-light-surface-container-highest",
     textColor: "text-md3-ref-neutral-neutral10",
-    colorHash: nl.get(palette, "colors.md3.sys.light.surface-container-highest"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.sys.light.surface-container-highest",
+    ),
     shadeName: "N-90",
   },
   {
@@ -464,61 +470,91 @@ export const neutralVShades = [
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant10",
     textColor: "text-md3-ref-neutral-variant-neutral-variant99",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant10"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant10",
+    ),
     shadeName: "NV-10",
   },
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant20",
     textColor: "text-md3-ref-neutral-variant-neutral-variant99",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant20"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant20",
+    ),
     shadeName: "NV-20",
   },
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant30",
     textColor: "text-md3-ref-neutral-variant-neutral-variant99",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant30"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant30",
+    ),
     shadeName: "NV-30",
   },
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant40",
     textColor: "text-md3-ref-neutral-variant-neutral-variant99",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant40"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant40",
+    ),
     shadeName: "NV-40",
   },
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant50",
     textColor: "text-md3-ref-neutral-variant-neutral-variant95",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant50"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant50",
+    ),
     shadeName: "NV-50",
   },
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant60",
     textColor: "text-md3-ref-neutral-variant-neutral-variant95",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant60"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant60",
+    ),
     shadeName: "NV-60",
   },
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant70",
     textColor: "text-md3-ref-neutral-variant-neutral-variant95",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant70"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant70",
+    ),
     shadeName: "NV-70",
   },
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant80",
     textColor: "text-md3-ref-neutral-variant-neutral-variant30",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant80"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant80",
+    ),
     shadeName: "NV-80",
   },
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant90",
     textColor: "text-md3-ref-neutral-variant-neutral-variant20",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant90"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant90",
+    ),
     shadeName: "NV-90",
   },
   {
     bgColor: "bg-md3-ref-neutral-variant-neutral-variant95",
     textColor: "text-md3-ref-neutral-variant-neutral-variant5",
-    colorHash: nl.get(palette, "colors.md3.ref.neutral-variant.neutral-variant95"),
+    colorHash: nl.get(
+      palette,
+      "colors.md3.ref.neutral-variant.neutral-variant95",
+    ),
     shadeName: "NV-95",
   },
 ];

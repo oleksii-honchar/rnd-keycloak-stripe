@@ -1,6 +1,4 @@
-type PickInput = {
-  [key: PropertyKey]: any;
-};
+type PickInput = Record<PropertyKey, any>;
 
 export function pick(
   object: PickInput,

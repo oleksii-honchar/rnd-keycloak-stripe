@@ -19,9 +19,12 @@ export function Footer() {
         `}
         >
           <span className={`flex justify-start gap-2 items-center`}>
-            <FaCopyright className={``} /> {moment().format("YYYY")} "TS + React + TW" Template
+            <FaCopyright className={``} /> {moment().format("YYYY")} "TS + React
+            + TW" Template
           </span>
-          <span className={`flex justify-end gap-2 items-center text-[10px] text-md3-sys-light-primary/50`}>
+          <span
+            className={`flex justify-end gap-2 items-center text-[10px] text-md3-sys-light-primary/50`}
+          >
             v{process.env.BUILD_VERSION}
           </span>
         </div>

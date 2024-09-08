@@ -16,7 +16,10 @@ export function PageNavbar() {
         bg-contain bg-no-repeat bg-top
       `}
       />
-      <Disclosure as="nav" className="backdrop-blur-md bg-md3-sys-light-surface/40 shadow-md sticky top-0 z-10">
+      <Disclosure
+        as="nav"
+        className="backdrop-blur-md bg-md3-sys-light-surface/40 shadow-md sticky top-0 z-10"
+      >
         {({ open }) => (
           <>
             <div className="mx-auto px-2 max-w-2xl md:max-w-3xl lg:max-w-5xl">
