@@ -4,7 +4,7 @@ import moment from "moment";
 import path from "path";
 import pino from "pino";
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
-import webpack, { WebpackPluginInstance } from "webpack";
+import webpack from "webpack";
 
 import { getRootRepoDir } from "../../scripts/esm-utils.ts";
 
@@ -88,7 +88,7 @@ export const baseConfig = (env: any = {}) => {
     },
     plugins: [
       ...(env.LAUNCH_PROD_SERVER ? [new PruneDummyEntryInDist(outputPath)] : plugins),
-      new PruneLicenseFilesInDist(outputPath) as WebpackPluginInstance,
+      new PruneLicenseFilesInDist(outputPath) as webpack.WebpackPluginInstance,
     ],
     node: false,
     watchOptions: {

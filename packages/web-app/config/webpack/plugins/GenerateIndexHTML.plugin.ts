@@ -1,13 +1,13 @@
 import pino from "pino";
-import webpack, { WebpackPluginInstance } from "webpack";
+import webpack from "webpack";
 
 import { generateIndexHtml } from "../libs/generateIndexHtml.ts";
 
-const { Compilation, sources } = webpack;
+const { Compilation } = webpack;
 
 const logger = pino.default({ name: "plugin:GenerateIndexHTML" });
 
-export default class GenerateIndexHTML implements WebpackPluginInstance {
+export default class GenerateIndexHTML implements webpack.WebpackPluginInstance {
   env = [];
 
   constructor(env: any = {}) {

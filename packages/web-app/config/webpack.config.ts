@@ -1,6 +1,5 @@
 import config from "config";
 import pino from "pino";
-import type { Configuration, WebpackPluginInstance } from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { merge } from "webpack-merge";
 

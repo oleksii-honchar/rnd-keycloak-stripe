@@ -1,7 +1,7 @@
 import { exec } from "child_process";
 import pino from "pino";
 import { promisify } from "util";
-import { WebpackPluginInstance } from "webpack";
+import webpack from "webpack";
 
 const execAsync = promisify(exec);
 const logger = pino.default({ name: "plugin:PruneDummyEntryInDist" });
@@ -10,7 +10,7 @@ const logger = pino.default({ name: "plugin:PruneDummyEntryInDist" });
  * When launch:prod:server with WebPack I'm using dummy entry to avoid error
  * Let's delete this file
  */
-export class PruneDummyEntryInDist implements WebpackPluginInstance {
+export class PruneDummyEntryInDist implements webpack.WebpackPluginInstance {
   outputPath = "";
 
   constructor(outputPath: string) {
