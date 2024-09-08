@@ -27,7 +27,7 @@ export default tseslint.config(
   eslintReact.configs.flat.recommended,
   eslintConfigPrettier,
   {
-    files: ["src/**/*.js", "src/**/*.ts", "src/**/*.tsx"],
+    files: ["src/**/*.js", "src/**/*.ts", "src/**/*.tsx", "config/**/*.ts"],
     plugins: {
       "typescript-eslint": tseslint.plugin,
       prettier: eslintPrettier,
@@ -50,6 +50,9 @@ export default tseslint.config(
       },
     },
     rules: {
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-expressions": "warn",
+      "no-unused-expressions": "off",
       "prettier/prettier": "error",
       "react/react-in-jsx-scope": "off",
     },
