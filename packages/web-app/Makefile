@@ -34,12 +34,12 @@ clean-dist:  ## Cleaning ./dist folder
 
 build: clean-dist ## Build production version
 	@printf "${BG_GREY}[build] Start${NC}\n"
-	@npx node --no-warnings --experimental-specifier-resolution=node \
-		--loader ./scripts/ts-esm-loader-with-tsconfig-paths.js ./config/webpack-wrapper.ts\
+	@npx node --no-warnings --experimental-strip-types ./config/webpack-wrapper.ts\
 		--config ./config/webpack.config.ts \
 		--mode production \
 		--env BUILD_ANALYZE=$(BUILD_ANALYZE) \
-		--env NODE_ENV=production 
+		--env NODE_ENV=production \
+		| pino-pretty -c
 	@printf "${BG_GREY}[build] Done${NC}\n"
 
 build-analyze: ## Build prod and analyze bundle content
@@ -47,31 +47,33 @@ build-analyze: ## Build prod and analyze bundle content
 
 build-dev: clean-dist ## Build local version
 	@printf "${BG_GREY}[build-dev] Start${NC}\n"
-	@npx node --no-warnings --experimental-specifier-resolution=node \
-		--loader ./scripts/ts-esm-loader-with-tsconfig-paths.js ./config/webpack-wrapper.ts\
+	@npx node --no-warnings --experimental-strip-types ./config/webpack-wrapper.ts\
 		--config ./config/webpack.config.ts \
 		--mode development \
-		--env BUILD_ANALYZE=$(BUILD_ANALYZE)
+		--env BUILD_ANALYZE=$(BUILD_ANALYZE) \
+		--env NODE_ENV=development \
+		| pino-pretty -c
 	@printf "${BG_GREY}[build-dev] DONE${NC}\n"
 
 build-dev-analyze: ## Build local and analyze bundle content
-	$(MAKE) build-loc BUILD_ANALYZE=true
+	$(MAKE) build-dev BUILD_ANALYZE=true
 
 dev: ## Launches local Webpack dev-server
 	@printf "${BG_GREY}[dev] Start${NC}\n"
 	@npx node --no-warnings --experimental-strip-types ./config/webpack-wrapper.ts\
 		--mode development --launch-server \
-		--stats normal | pino-pretty -c
+		--env NODE_ENV=development \
+		--stats normal \
+		| pino-pretty -c
 	@printf "${BG_GREY}[dev] DONE${NC}\n"
 
 prod: ## Launches local Webpack dev-server in production mode
 	@printf "${BG_GREY}[prod] Start${NC}\n"
-	@npx node --no-warnings --experimental-specifier-resolution=node \
-		--loader ./scripts/ts-esm-loader-with-tsconfig-paths.js ./config/webpack-wrapper.ts\
+	@npx node --no-warnings --experimental-strip-types ./config/webpack-wrapper.ts\
 		--mode production --launch-server \
 		--stats normal \
-		--env NODE_ENV=production
-
+		--env NODE_ENV=production \
+		| pino-pretty -c
 	@printf "${BG_GREY}[prod] DONE${NC}\n"
 
 
