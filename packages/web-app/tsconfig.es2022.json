@@ -2,18 +2,17 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "noEmit": true,
     "paths": {
-      "src/*": [ "./src/*" ],
-      "scripts/*": [ "./scripts/*" ],
+      "src/*": ["./src/*"],
+      "scripts/*": ["./scripts/*"],
       "package.json": ["./package.json"]
     },
     "module": "esnext",
     "moduleResolution": "Bundler",
-    "target": "ES2022",
+    "target": "ES2022"
   },
-  "include": [
-    "./src/**/*"
-  ],
+  "include": ["./src/**/*"],
   "exclude": [
     "./node_modules",
     "./configs",
