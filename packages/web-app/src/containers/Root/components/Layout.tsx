@@ -5,7 +5,7 @@ import { PageNavbar } from "src/components/PageNavbar";
 import { ScrollDownIndicator } from "src/components/ScrollDownIndicator";
 import { ScrollToTop } from "src/components/ScrollToTop";
 
-export function Layout({}) {
+export function Layout() {
   return (
     <div className="flex min-h-screen w-full flex-col bg-md3-white ">
       <ScrollToTop />

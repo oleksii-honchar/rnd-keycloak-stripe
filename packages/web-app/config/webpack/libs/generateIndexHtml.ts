@@ -5,7 +5,8 @@ import { getRootRepoDir } from "../../../scripts/esm-utils.ts";
 
 export function generateIndexHtml(env: any = {}) {
   const data = {
-    scriptEnvSuffix: process.env.NODE_ENV === "development" ? "development" : "production.min",
+    scriptEnvSuffix:
+      env.NODE_ENV === "development" ? "development" : "production.min",
   };
 
   const tmplPath = path.join(getRootRepoDir(), "src/assets/index.hbs");

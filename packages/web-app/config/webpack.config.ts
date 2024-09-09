@@ -23,7 +23,10 @@ const nodeEnv = config.get("runtime.environment");
 // `NODE_ENV` = development | test | production
 // `LOG_LEVEL` = error | warn | info | debug
 
-export const configFactory = (env: any = {}, argv: { mode: string; launchServer?: boolean }) => {
+export const configFactory = (
+  env: any = {},
+  argv: { mode: string; launchServer?: boolean },
+) => {
   env = {
     BUILD_ANALYZE: null,
     TS_LOADER: "esbuild", // or ts-build
@@ -34,26 +37,26 @@ export const configFactory = (env: any = {}, argv: { mode: string; launchServer?
 
   const envES2022 = { ...env, TS_TARGET: "es2022" };
 
-  let cfgES2022 = baseConfig(envES2022); // @ts-ignore
-  cfgES2022 = merge(cfgES2022, moduleConfig(envES2022)); // @ts-ignore
-  cfgES2022 = merge(cfgES2022, cssModuleConfig(env)); // @ts-ignore
+  let cfgES2022 = baseConfig(envES2022); //@ts-expect-error merging configs
+  cfgES2022 = merge(cfgES2022, moduleConfig(envES2022)); //@ts-expect-error merging configs
+  cfgES2022 = merge(cfgES2022, cssModuleConfig(env)); //@ts-expect-error merging configs
   cfgES2022 = merge(cfgES2022, externalsConfig);
 
   if (argv.launchServer === true) {
-    // @ts-ignore
+    // @ts-expect-error merging configs
     cfgES2022 = merge(cfgES2022, devServerConfig(envES2022));
   }
 
   if (env.LAUNCH_PROD_SERVER) {
     cfgES2022 = merge(cfgES2022, {
-      // @ts-ignore
+      // @ts-expect-error merging configs
       entry: {
         dummy: "./config/webpack/dummy-entry.ts",
       },
     });
   } else {
     cfgES2022 = merge(cfgES2022, {
-      // @ts-ignore
+      // @ts-expect-error merging configs
       entry: {
         app: "./src/index.es2022.tsx",
       },
@@ -63,7 +66,7 @@ export const configFactory = (env: any = {}, argv: { mode: string; launchServer?
 
   if (env.BUILD_ANALYZE === "true") {
     logger.info(`bundle analyzer included`);
-    // @ts-ignore
+    // @ts-expect-error merging configs
     cfgES2022 = merge(cfgES2022, {
       plugins: [new BundleAnalyzerPlugin(env)],
     });
@@ -76,11 +79,11 @@ export const configFactory = (env: any = {}, argv: { mode: string; launchServer?
 
   // for prod will add es2016 cfg
   const envES2016 = { ...env, TS_TARGET: "es2016" };
-  let cfgES2016 = baseConfig(envES2016); // @ts-ignore
-  cfgES2016 = merge(cfgES2016, moduleConfig(envES2016)); // @ts-ignore
+  let cfgES2016 = baseConfig(envES2016); // @ts-expect-error merging configs
+  cfgES2016 = merge(cfgES2016, moduleConfig(envES2016)); // @ts-expect-error merging configs
   cfgES2016 = merge(cfgES2016, externalsConfig);
   cfgES2016 = merge(cfgES2016, {
-    // @ts-ignore
+    // @ts-expect-error merging configs
     entry: {
       app: "./src/index.es2016.tsx",
     },
@@ -88,7 +91,7 @@ export const configFactory = (env: any = {}, argv: { mode: string; launchServer?
 
   let configs = [cfgES2022, cfgES2016];
 
-  // @ts-ignore
+  // @ts-expect-error merging configs
   configs = configs.map((cfg) => merge(cfg, prodConfig));
 
   logger.info(`config composition completed`);

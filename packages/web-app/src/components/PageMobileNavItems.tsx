@@ -1,4 +1,4 @@
-import { Disclosure } from "@headlessui/react";
+import { DisclosurePanel } from "@headlessui/react";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { NavigationContext } from "src/contexts/NavigationContext";
@@ -7,7 +7,7 @@ import { classNames } from "src/utils/classNames";
 export function PageMobileNavItems() {
   const { navItems } = useContext(NavigationContext);
   return (
-    <Disclosure.Panel className="sm:hidden ">
+    <DisclosurePanel className="sm:hidden ">
       {({ close }) => (
         <div
           className={`
@@ -24,7 +24,7 @@ export function PageMobileNavItems() {
               }}
               key={item.name}
               to={item.path}
-              className={({ isActive, isPending }) => {
+              className={({ isActive }) => {
                 return classNames(
                   isActive
                     ? "text-md3-sys-light-on-primary bg-md3-ref-primary-primary40"
@@ -41,6 +41,6 @@ export function PageMobileNavItems() {
           ))}
         </div>
       )}
-    </Disclosure.Panel>
+    </DisclosurePanel>
   );
 }

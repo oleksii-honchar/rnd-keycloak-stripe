@@ -11,7 +11,10 @@ logger.info("loading 'Module-CSS'");
 const nodeEnv = config.get("runtime.environment");
 
 export const cssModuleConfig = (env: any) => {
-  const postCssConfigPath = path.join(getRootRepoDir(), "./config/webpack/postcss.config.ts");
+  const postCssConfigPath = path.join(
+    getRootRepoDir(),
+    "./config/webpack/postcss.config.ts",
+  );
 
   const plugins = [
     new MiniCssExtractPlugin({

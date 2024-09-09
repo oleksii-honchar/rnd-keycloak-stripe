@@ -18,11 +18,15 @@ export class PruneDummyEntryInDist implements webpack.WebpackPluginInstance {
   }
 
   apply(compiler: any) {
-    compiler.hooks.done.tap("PruneDummyEntryInDist", async (compilation: any) => {
+    compiler.hooks.done.tap("PruneDummyEntryInDist", async () => {
       logger.info("looking 'dummy.bundle.mjs' to prune");
       try {
-        await execAsync(`find ${this.outputPath} -type f -name 'dummy.bundle.mjs' -delete\n`);
-      } catch (err) { }
+        await execAsync(
+          `find ${this.outputPath} -type f -name 'dummy.bundle.mjs' -delete\n`,
+        );
+      } catch (err) {
+        logger.error(err);
+      }
       logger.info("Done ✨");
     });
   }

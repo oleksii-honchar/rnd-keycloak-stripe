@@ -10,7 +10,7 @@ function SingleCrumb({ item, keyId, isLast }: StringIndex) {
       )}
       key={keyId}
     >
-      <a className={classNames(isLast ? `font-medium` : false)} href="#">
+      <a className={classNames(isLast ? `font-medium` : "")} href="#">
         <span>{item}</span>
       </a>
       {!isLast && (

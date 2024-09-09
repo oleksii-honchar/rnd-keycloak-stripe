@@ -9,8 +9,12 @@ import webpack from "webpack";
 import { getRootRepoDir } from "../../scripts/esm-utils.ts";
 
 import pkg from "../../package.json" with { type: "json" };
-const { PruneLicenseFilesInDist } = await import("./plugins/PruneLicenseFilesInDist.plugin.ts");
-const { PruneDummyEntryInDist } = await import("./plugins/PruneDummyEntryInDist.plugin.ts");
+const { PruneLicenseFilesInDist } = await import(
+  "./plugins/PruneLicenseFilesInDist.plugin.ts"
+);
+const { PruneDummyEntryInDist } = await import(
+  "./plugins/PruneDummyEntryInDist.plugin.ts"
+);
 
 const logger = pino.default({ name: "webpack:config:snippet:base" });
 logger.info("loading 'Base'");
@@ -44,7 +48,14 @@ export const baseConfig = (env: any = {}) => {
         {
           from: "./src/assets",
           to: ".",
-          globOptions: { ignore: ["**/*.hbs", "**/.DS_Store", "**/index.hbs", "**/favicons/**"] },
+          globOptions: {
+            ignore: [
+              "**/*.hbs",
+              "**/.DS_Store",
+              "**/index.hbs",
+              "**/favicons/**",
+            ],
+          },
         },
       ],
     }),
@@ -74,7 +85,10 @@ export const baseConfig = (env: any = {}) => {
       modules: ["src", "node_modules"],
       plugins: [
         new TsconfigPathsPlugin({
-          configFile: path.join(getRootRepoDir(), `./tsconfig.${env.TS_TARGET}.json`),
+          configFile: path.join(
+            getRootRepoDir(),
+            `./tsconfig.${env.TS_TARGET}.json`,
+          ),
           logLevel: "INFO",
         }),
       ],
@@ -87,7 +101,9 @@ export const baseConfig = (env: any = {}) => {
       publicPath: "/assets/",
     },
     plugins: [
-      ...(env.LAUNCH_PROD_SERVER ? [new PruneDummyEntryInDist(outputPath)] : plugins),
+      ...(env.LAUNCH_PROD_SERVER
+        ? [new PruneDummyEntryInDist(outputPath)]
+        : plugins),
       new PruneLicenseFilesInDist(outputPath) as webpack.WebpackPluginInstance,
     ],
     node: false,

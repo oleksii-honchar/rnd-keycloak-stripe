@@ -7,7 +7,9 @@ const { Compilation } = webpack;
 
 const logger = pino.default({ name: "plugin:GenerateIndexHTML" });
 
-export default class GenerateIndexHTML implements webpack.WebpackPluginInstance {
+export default class GenerateIndexHTML
+  implements webpack.WebpackPluginInstance
+{
   env = [];
 
   constructor(env: any = {}) {
@@ -22,9 +24,7 @@ export default class GenerateIndexHTML implements webpack.WebpackPluginInstance 
           stage: Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE,
         },
         () => {
-          logger.info(
-            "processing asset index.hbs ❱ dist/index.html",
-          );
+          logger.info("processing asset index.hbs ❱ dist/index.html");
           generateIndexHtml(this.env);
           logger.info("Done ✨");
         },

@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
 /** @jsx jsx */
-import { css } from "@emotion/react";
+import { jsx, css } from "@emotion/react";
 import { Link } from "react-router-dom";
 
 export function Logo() {

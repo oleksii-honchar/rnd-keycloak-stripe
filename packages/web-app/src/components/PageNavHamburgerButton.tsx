@@ -2,7 +2,7 @@ import { DisclosureButton } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 
-export function PageNavHamburgerButton({ open = false, ...props }) {
+export function PageNavHamburgerButton({ open = false }) {
   return (
     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
       <DisclosureButton

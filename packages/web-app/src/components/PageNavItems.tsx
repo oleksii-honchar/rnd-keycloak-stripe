@@ -14,7 +14,7 @@ export function PageNavItems() {
           <NavLink
             key={item.name}
             to={item.path}
-            className={({ isActive, isPending }) => {
+            className={({ isActive }) => {
               return classNames(
                 isActive
                   ? "text-md3-sys-light-on-primary bg-md3-ref-primary-primary40"

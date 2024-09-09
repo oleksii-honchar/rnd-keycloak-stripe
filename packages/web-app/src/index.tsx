@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-// @ts-ignore
+// @ts-expect-error TBD
 import { LoggerService } from "@ciklum/logan";
 
 import { Root } from "src/containers/Root/Root";

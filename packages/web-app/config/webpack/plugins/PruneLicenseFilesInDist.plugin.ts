@@ -17,12 +17,16 @@ export class PruneLicenseFilesInDist implements webpack.WebpackPluginInstance {
   }
 
   apply(compiler: any) {
-    compiler.hooks.done.tap("PruneLicenseFilesInDist", async (compilation: any) => {
+    compiler.hooks.done.tap("PruneLicenseFilesInDist", async () => {
       logger.info("looking *.LICENCE.txt to prune");
       try {
-        await execAsync(`find ${this.outputPath} -type f -name '*LICENSE*' -delete\n`);
+        await execAsync(
+          `find ${this.outputPath} -type f -name '*LICENSE*' -delete\n`,
+        );
         // await execAsync(`ls -al ${this.outputPath}`);
-      } catch (err) { }
+      } catch (err) {
+        logger.error(err);
+      }
       logger.info("Done ✨");
     });
   }

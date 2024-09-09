@@ -15,6 +15,7 @@ export default tseslint.config(
       "**/node_modules/**",
       "**/coverage/**",
       "**/*.d.ts",
+      "**/*.js",
       ".prettierrc.js",
       "eslint.config.js",
       "jest.config.js",
@@ -27,7 +28,7 @@ export default tseslint.config(
   eslintReact.configs.flat.recommended,
   eslintConfigPrettier,
   {
-    files: ["src/**/*.js", "src/**/*.ts", "src/**/*.tsx", "config/**/*.ts"],
+    files: ["src/**/*.ts", "src/**/*.tsx", "config/**/*.ts"],
     plugins: {
       "typescript-eslint": tseslint.plugin,
       prettier: eslintPrettier,
@@ -50,11 +51,13 @@ export default tseslint.config(
       },
     },
     rules: {
+      "@emotion/jsx-import": "error",
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-expressions": "warn",
       "no-unused-expressions": "off",
       "prettier/prettier": "error",
       "react/react-in-jsx-scope": "off",
+      "react/no-unknown-property": ["error", { ignore: ["css"] }],
     },
     settings: {
       react: {

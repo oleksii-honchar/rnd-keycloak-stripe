@@ -2,7 +2,6 @@ import { createRequire } from "module";
 import path from "path";
 import pino from "pino";
 
-import { getRootRepoDir } from "../../scripts/esm-utils.ts";
 import type { StringIndex } from "../../src/typings/index.d.ts";
 
 import tailwindConfig from "../../tailwind.config.ts";
@@ -11,7 +10,11 @@ const require = createRequire(import.meta.url);
 const logger = pino.default({ name: "post-css:config" });
 logger.info("loading config");
 
-export default function postCssConfig(params: { file: any; options: StringIndex; env: any }) {
+export default function postCssConfig(params: {
+  file: any;
+  options: StringIndex;
+  env: any;
+}) {
   const tailwind = require("tailwindcss")(tailwindConfig);
 
   const mdlPostCssImport = require("postcss-import");
