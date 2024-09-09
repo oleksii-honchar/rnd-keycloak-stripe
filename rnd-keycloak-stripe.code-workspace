@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+      "name": "✨ rnd keycloak-stripe",
+			"path": "."
+		},
+    {
+      "name": "📦 api",
+      "path": "packages/api"
+    },
+    {
+      "name": "📦 web-app",
+      "path": "packages/web-app"
+    },
+  ],
+  "settings": {
+    "conventionalCommits.scopes": [
+      "api",
+      "web-app",
+    ],
+    "window.title": "${activeEditorShort}${separator}${rootName}",
+    "jestrunner.jestCommand": "npx jest"
+  }
+}
