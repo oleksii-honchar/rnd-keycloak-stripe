@@ -21,11 +21,11 @@ logger.info("loading 'Base'");
 
 const outputPath = path.join(getRootRepoDir(), "./dist/assets");
 
-const nodeEnv = config.get("runtime.environment");
 const logLevel = config.get("runtime.logLevel");
 
 export const baseConfig = (env: any = {}) => {
   const outputSuff = env.TS_TARGET === "es2016" ? "es2016.js" : "mjs";
+  const nodeEnv = env.NODE_ENV;
 
   logger.info(`'Base' processing '${env.TS_TARGET}' config`);
 

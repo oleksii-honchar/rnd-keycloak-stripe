@@ -1,4 +1,3 @@
-import config from "config";
 import pino from "pino";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { merge } from "webpack-merge";
@@ -17,8 +16,6 @@ const logger = pino.default({
 });
 logger.info("Starting config composition");
 
-const nodeEnv = config.get("runtime.environment");
-
 // Short usage reference
 // `NODE_ENV` = development | test | production
 // `LOG_LEVEL` = error | warn | info | debug
@@ -33,6 +30,7 @@ export const configFactory = (
     ...env,
   };
 
+  const nodeEnv = env.NODE_ENV;
   logger.info(`using "${nodeEnv}" mode`);
 
   const envES2022 = { ...env, TS_TARGET: "es2022" };

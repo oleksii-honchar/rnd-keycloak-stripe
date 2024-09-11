@@ -1,5 +1,6 @@
 import moment from "moment";
-import { FaCopyright } from "react-icons/fa";
+
+import { CopyrightFilledIcon } from "./icons";
 
 export function Footer() {
   return (
@@ -19,8 +20,8 @@ export function Footer() {
         `}
         >
           <span className={`flex justify-start gap-2 items-center`}>
-            <FaCopyright className={``} /> {moment().format("YYYY")} &quot;TS +
-            React + TW&quot; Template
+            <CopyrightFilledIcon /> {moment().format("YYYY")} &quot;TS + React +
+            TW&quot; Template
           </span>
           <span
             className={`flex justify-end gap-2 items-center text-[10px] text-md3-sys-light-primary/50`}

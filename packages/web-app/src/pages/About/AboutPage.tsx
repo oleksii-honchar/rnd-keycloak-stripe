@@ -1,4 +1,4 @@
-import { FaGithubSquare } from "react-icons/fa";
+import { GithubIcon } from "src/components/icons";
 
 import { Breadcrumbs } from "src/components/Breadcrumbs";
 
@@ -54,7 +54,7 @@ export default function AboutPage() {
                       href="https://github.com/oleksii-honchar/ts-react-tmpl"
                       className="relative top-[3px] text-md3-sys-light-primary hover:text-md3-sys-light-primary/70 hover:underline inline-flex items-center gap-1"
                     >
-                      <FaGithubSquare />
+                      <GithubIcon />
                       repo
                     </a>
                     .

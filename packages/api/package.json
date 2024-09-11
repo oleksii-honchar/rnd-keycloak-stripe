@@ -24,7 +24,7 @@
     "dev:json-logs": "make logs-restart && pnpm run dotenvx -- nodemon src/index.ts > ./logs/fastify.log 2>&1",
     "docker:build": "make docker-build",
     "docker:run": "make docker-run",
-    "dotenvx": "dotenvx run --env-file .env",
+    "dotenvx": "dotenvx run --env-file ./../../.env",
     "lint:check": "ESLINT_USE_FLAT_CONFIG=true eslint --config ./eslint.config.js --cache . --max-warnings 0",
     "lint:fix": "pnpm lint:check --fix",
     "prepare": "husky",
