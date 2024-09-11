@@ -13,9 +13,7 @@ export default function AboutPage() {
         id="first-section-wrapper"
         className={`
             w-full flex flex-col items-center
-            bg-[radial-gradient(ellipse_90%_40%_at_25%_25%,_var(--tw-gradient-stops))] 
-            from-md3-ref-primary-primary99 to-md3-ref-primary-primary90
-            bg-contain bg-no-repeat bg-top
+            bg-md-sys-light-background 
           `}
       >
         <Breadcrumbs
@@ -27,7 +25,7 @@ export default function AboutPage() {
             <div className="flex flex-col items-start w-full">
               <h1 className="text-3xl font-medium mb-6">Welcome stranger!</h1>
               <div className="w-full flex flex-row items-center">
-                <div className="w-1/2 backdrop-blur-md bg-md3-ref-neutral-neutral98/70 p-2 rounded-lg">
+                <div className="w-1/2 backdrop-blur-md bg-md-ref-neutral-neutral98/70 p-2 rounded-lg">
                   <p className="text-l mb-2">
                     This bootstrap template contains multiple tools
                     configuration in &quot;ready to use&quot;, i.e copy & paste
@@ -52,7 +50,7 @@ export default function AboutPage() {
                     You can find more information in the &nbsp;
                     <a
                       href="https://github.com/oleksii-honchar/ts-react-tmpl"
-                      className="relative top-[3px] text-md3-sys-light-primary hover:text-md3-sys-light-primary/70 hover:underline inline-flex items-center gap-1"
+                      className="relative top-[3px] text-md-sys-light-primary hover:text-md-sys-light-primary/70 hover:underline inline-flex items-center gap-1"
                     >
                       <GithubIcon />
                       repo

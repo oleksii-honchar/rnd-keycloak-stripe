@@ -19,11 +19,11 @@ export function ErrorBoundary() {
       <div
         className={`
           max-w-md rounded-3xl shadow-xl
-          p-10 border-2 border-md3-sys-light-error
-          text-md3-sys-light-on-error-container
+          p-10 border-2 border-md-sys-light-error
+          text-md-sys-light-on-error-container
           bg-gradient-to-br
-          from-md3-sys-light-error-container/10
-          to-md3-sys-light-error-container
+          from-md-sys-light-error-container/10
+          to-md-sys-light-error-container
             
         `}
       >

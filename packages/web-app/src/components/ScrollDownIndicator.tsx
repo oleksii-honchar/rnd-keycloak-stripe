@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export function ScrollDownIndicator() {
   const [isVisible, setIsVisible] = useState(true);
@@ -28,7 +28,7 @@ export function ScrollDownIndicator() {
   return (
     <div className="scroll-down-indicator">
       {isVisible && (
-        <div className="fixed bottom-2 left-2/4 text-2xl text-md3-sys-light-primary animate-pulse">
+        <div className="fixed bottom-2 left-2/4 text-2xl text-md-sys-light-primary animate-pulse">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

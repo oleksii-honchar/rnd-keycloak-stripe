@@ -7,7 +7,7 @@ import { ScrollToTop } from "src/components/ScrollToTop";
 
 export function Layout() {
   return (
-    <div className="flex min-h-screen w-full flex-col bg-md3-white ">
+    <div className="flex min-h-screen w-full flex-col bg-md-white ">
       <ScrollToTop />
       <PageNavbar />
       <main className="w-full flex flex-col flex-1 items-center justify-start">

@@ -2,7 +2,7 @@
 import pino from 'pino';
 // @ts-expect-error this is recommended way but TS complains
 import defaultTheme from 'tailwindcss/defaultTheme';
-import m3DesignTokensColors from './src/stylesheets/md3-design-tokens-v2.json' with { type: 'json' };
+import m3DesignTokensColors from './src/stylesheets/md3-design-tokens-v3.json' with { type: 'json' };
 
 const logger = pino.default({ name: "tailwind-css:config" });
 logger.info("loading config");

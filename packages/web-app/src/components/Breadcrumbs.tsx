@@ -6,7 +6,7 @@ function SingleCrumb({ item, keyId, isLast }: StringIndex) {
   return (
     <li
       className={classNames(
-        `text-md3-sys-light-on-surface-variant hover:text-md3-sys-light-secondary`,
+        `text-md-sys-light-on-surface-variant hover:text-md-sys-light-secondary`,
         "flex cursor-pointer items-center font-sans text-sm font-normal leading-normal antialiased transition-colors duration-300",
       )}
       key={keyId}
@@ -31,7 +31,7 @@ export function Breadcrumbs({ data, className }: StringIndex) {
             className={`
                 flex cursor-pointer items-center font-sans text-sm font-normal leading-normal 
                  antialiased transition-colors duration-300
-                 text-md3-sys-light-on-surface-variant hover:text-md3-sys-light-secondary 
+                 text-md-sys-light-on-surface-variant hover:text-md-sys-light-secondary 
             `}
           >
             <a className="opacity-60" href="#">

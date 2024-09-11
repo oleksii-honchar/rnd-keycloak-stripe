@@ -12,13 +12,13 @@ export function PageNavbar() {
         className={`
         h-12 w-full absolute
         bg-[radial-gradient(ellipse_90%_70%_at_20%_50%,_var(--tw-gradient-stops))] 
-        from-md3-ref-primary-primary99 to-md3-ref-primary-primary90
+        from-md-ref-pal-primary10 to-md-ref-pal-primary50
         bg-contain bg-no-repeat bg-top
       `}
       />
       <Disclosure
         as="nav"
-        className="backdrop-blur-md bg-md3-sys-light-surface/40 shadow-md sticky top-0 z-10"
+        className="backdrop-blur-md bg-md-ref-pal-primary20/40 shadow-md sticky top-0 z-10"
       >
         {({ open }) => (
           <>

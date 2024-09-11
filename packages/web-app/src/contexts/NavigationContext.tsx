@@ -11,7 +11,7 @@ interface NavigationContextProviderProps {
 
 const navigationItemsInitial: NavigationItem[] = [
   { name: "About", path: "about" },
-  { name: "Palette", path: "palette" },
+  { name: "Restricted", path: "restricted" },
 ];
 
 const navCtxInitial: NavigationContextProps = {

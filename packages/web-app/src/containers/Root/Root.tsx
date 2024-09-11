@@ -7,7 +7,9 @@ import { NavContextProvider } from "src/contexts/NavigationContext";
 import { Layout } from "./components/Layout";
 
 const AboutPage = lazy(() => import("src/pages/About/AboutPage"));
-const PalettePage = lazy(() => import("src/pages/Palette/PalettePage"));
+const RestrictedPage = lazy(
+  () => import("src/pages/Restricted/RestrictedPage"),
+);
 
 const router = createBrowserRouter([
   {
@@ -17,15 +19,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <PalettePage />,
+        element: <AboutPage />,
       },
       {
         path: "about",
         element: <AboutPage />,
       },
       {
-        path: "palette",
-        element: <PalettePage />,
+        path: "restricted",
+        element: <RestrictedPage />,
       },
     ],
   },
