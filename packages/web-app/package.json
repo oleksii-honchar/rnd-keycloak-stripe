@@ -34,10 +34,10 @@
     "pino": "catalog:"
   },
   "devDependencies": {
-    "@ciklum/logan": "0.4.10",
     "@emotion/eslint-plugin": "11.12.0",
     "@emotion/react": "11.13.3",
     "@emotion/styled": "11.13.0",
+    "@floating-ui/react": "^0.26.23",
     "@headlessui/react": "^2.1.5",
     "@heroicons/react": "^2.1.5",
     "@tsconfig/node22": "22.0.0",
@@ -85,6 +85,7 @@
     "react": "catalog:web-app",
     "react-dom": "catalog:web-app",
     "react-router-dom": "catalog:web-app",
+    "react-toastify": "^10.0.5",
     "source-map-loader": "5.0.0",
     "string-width": "^7.2.0",
     "style-loader": "4.0.0",

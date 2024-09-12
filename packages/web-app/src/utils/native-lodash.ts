@@ -54,10 +54,27 @@ function isObjectEmpty(obj: object): boolean {
   return Object.keys(obj).length === 0;
 }
 
+function omit<T extends object, K extends keyof T>(
+  object: T,
+  keys: K[],
+): Omit<T, K> {
+  return Object.keys(object).reduce(
+    (result, key) => {
+      if (!keys.includes(key as K)) {
+        // @ts-expect-error TS doesn't like this
+        result[key as keyof Omit<T, K>] = object[key as keyof T];
+      }
+      return result;
+    },
+    {} as Omit<T, K>,
+  );
+}
+
 export const nl = {
-  pick,
-  get,
-  set,
   camelToKebab,
+  get,
   isObjectEmpty,
+  omit,
+  pick,
+  set,
 };

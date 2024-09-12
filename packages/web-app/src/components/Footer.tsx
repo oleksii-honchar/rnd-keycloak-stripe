@@ -1,30 +1,34 @@
 import moment from "moment";
-
 import { CopyrightFilledIcon } from "./icons";
 
 export function Footer() {
   return (
     <div
+      id="Footer"
       className={`
         h-12 w-full
-        bg-[radial-gradient(ellipse_90%_70%_at_20%_50%,_var(--tw-gradient-stops))] 
-        from-md-ref-pal-primary10 to-md-ref-pal-primary20
-        bg-contain bg-no-repeat bg-top
+        backdrop-blur-sm 
+        bg-md-sys-light-surface-container-lowest
       `}
     >
-      <div className="bg-md-sys-light-surface/40 w-full h-full">
+      <div className="w-full h-full">
         <div
           className={`
-          mx-auto w-full max-w-2xl md:max-w-3xl lg:max-w-5xl justify-between  flex h-full px-2
+          relative
+          mx-auto w-full max-w-3xl md:max-w-4xl lg:max-w-6xl 
+          justify-center  flex h-full px-2
           text-md-sys-light-primary text-sm
         `}
         >
-          <span className={`flex justify-start gap-2 items-center`}>
-            <CopyrightFilledIcon /> {moment().format("YYYY")} | Oleksii Honchar
-            | &quot;Keycloak + Stripe&quot; R&D
+          <span className={`flex justify-center gap-2 items-center`}>
+            <CopyrightFilledIcon /> {moment().format("YYYY")} Oleksíi Honchar |
+            &quot;Keycloak + Stripe&quot; R&D
           </span>
           <span
-            className={`flex justify-end gap-2 items-center text-[10px] text-md-sys-light-primary/50`}
+            className={`
+              gap-2 absolute bottom-0 right-0
+              text-[10px] text-md-sys-on-background
+            `}
           >
             v{process.env.BUILD_VERSION}
           </span>

@@ -1,5 +1,9 @@
-import { lazy, ReactElement, Suspense } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, ReactElement, Suspense, useEffect } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useNavigate,
+} from "react-router-dom";
 
 import { BigSpinner } from "src/components/BigSpinner";
 import { ErrorBoundary } from "src/components/ErrorBoundary";
@@ -11,6 +15,16 @@ const RestrictedPage = lazy(
   () => import("src/pages/Restricted/RestrictedPage"),
 );
 
+function RedirectToAboutPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/about");
+  }, [navigate]);
+
+  return null;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +33,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <AboutPage />,
+        element: <RedirectToAboutPage />,
       },
       {
         path: "about",

@@ -1,15 +1,14 @@
 export function Title() {
   return (
-    <div className="hidden sm:ml-2 sm:block sm:w-6/12 md:w-7/12 lg:w-8/12 space-x-4 flex justify-self-center">
-      <p
-        className={`
+    <p
+      className={`
+          grow
           text-md-sys-light-primary
           font-bold
-          text-base 
-          sm:leading-7 sm:truncate lg:truncate xl:truncate sm:tracking-tight`}
-      >
-        &quot;Keycloak + Stripe&quot; R&D
-      </p>
-    </div>
+          text-xl 
+        `}
+    >
+      &quot;Keycloak + Stripe&quot; R&D
+    </p>
   );
 }

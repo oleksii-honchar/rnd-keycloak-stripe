@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 /** @jsx jsx */
-import { jsx, css } from "@emotion/react";
+import { css, jsx } from "@emotion/react";
 import { Link } from "react-router-dom";
 
 export function Logo() {
@@ -9,7 +9,7 @@ export function Logo() {
       <Link to={"/"}>
         <img
           css={css`
-            filter: hue-rotate(90deg);
+            filter: hue-rotate(72deg);
           `}
           className="h-8 w-auto"
           src="/assets/images/maze.png"

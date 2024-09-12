@@ -1,18 +1,56 @@
+@import "react-toastify/dist/ReactToastify";
+@import "tooltip.pcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   font-family: "Inter", sans-serif;
-}
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: "Inter var", sans-serif;
-  }
+
+  /* toastify overrides */
+  --toastify-color-info: theme("colors.md.ref.pal.primary500");
+  --toastify-color-success: theme("colors.md.ref.pal.secondary500");
+  --toastify-color-error: theme("colors.md.sys.light.error");
+  --toastify-text-color-light: theme("colors.md.sys.light.on-surface");
+  --toastify-toast-background: theme(
+    "colors.md.sys.light.surface-container-low"
+  );
 }
 
 html {
-  font-size: calc(15px + 0.390625vw);
+  font-size: calc(12px + 0.390625vw);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: underline;
+  &:focus {
+    outline: none;
+  }
 }
 
 .icon {

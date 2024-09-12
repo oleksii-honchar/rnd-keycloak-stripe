@@ -1,16 +1,13 @@
 import { createRoot } from "react-dom/client";
-// @ts-expect-error TBD
-import { LoggerService } from "@ciklum/logan";
 
 import { Root } from "src/containers/Root/Root";
-
-LoggerService.setGlobalTitle(process.env.PKG_NAME);
+import { getLogger } from "src/utils/getLogger";
 
 window.config = { logLevel: process.env.LOG_LEVEL };
-const logger = new LoggerService();
-logger.setTitle("index");
 
 function startApp(): void {
+  const logger = getLogger(process.env.PKG_NAME as string);
+
   logger.info("Starting app...");
   const container = document.getElementById("app-root")!;
   const root = createRoot(container);
