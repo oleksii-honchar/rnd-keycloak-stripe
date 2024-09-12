@@ -17,6 +17,7 @@ export function UserAccountNavItemCntr() {
     <Tooltip
       enableHandleClose
       useArrow={false}
+      dontOpenOnHover
       allowedPlacements={["bottom", "bottom-end"]}
     >
       {/* Color & it's name */}

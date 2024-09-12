@@ -33,6 +33,7 @@ interface TooltipOptions {
   debug?: boolean;
   useArrow?: boolean;
   allowedPlacements?: Placement[];
+  dontOpenOnHover?: boolean;
 }
 
 export function useTooltip({
@@ -40,6 +41,7 @@ export function useTooltip({
   placement = "top",
   allowedPlacements = ["bottom"],
   open: controlledOpen,
+  dontOpenOnHover = false,
   onOpenChange: setControlledOpen,
   enableHandleClose = false,
   debug = false,
@@ -83,7 +85,7 @@ export function useTooltip({
   const hover = useHover(context, {
     move: false,
     // enabled: controlledOpen == null,
-    enabled: false,
+    enabled: !dontOpenOnHover,
     handleClose:
       (enableHandleClose &&
         safePolygon({
