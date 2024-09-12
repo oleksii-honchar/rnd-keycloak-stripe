@@ -32,11 +32,13 @@ interface TooltipOptions {
   enableHandleClose?: boolean;
   debug?: boolean;
   useArrow?: boolean;
+  allowedPlacements?: Placement[];
 }
 
 export function useTooltip({
   initialOpen = false,
   placement = "top",
+  allowedPlacements = ["bottom"],
   open: controlledOpen,
   onOpenChange: setControlledOpen,
   enableHandleClose = false,
@@ -68,7 +70,7 @@ export function useTooltip({
       offset(ARROW_HEIGHT + GAP),
       autoPlacement({
         crossAxis: true,
-        allowedPlacements: ["bottom"],
+        allowedPlacements: allowedPlacements,
         // allowedPlacements: ['bottom', 'bottom-start', 'bottom-end'],
       }),
       shift({ padding: 5 }),
@@ -80,7 +82,8 @@ export function useTooltip({
   const click = useClick(context);
   const hover = useHover(context, {
     move: false,
-    enabled: controlledOpen == null,
+    // enabled: controlledOpen == null,
+    enabled: false,
     handleClose:
       (enableHandleClose &&
         safePolygon({

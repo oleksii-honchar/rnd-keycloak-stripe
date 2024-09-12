@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { classNames } from "src/utils/classNames";
-import { GithubLinkBtn } from "./GithubLinkBtn";
+import { UserAccountNavItemCntr } from "./UserAccountNavItemCntr/UserAccountNavItemCntr";
 
 export function PageNavItems() {
   const navItems = [
@@ -34,7 +34,7 @@ export function PageNavItems() {
           {item.name}
         </NavLink>
       ))}
-      <GithubLinkBtn />
+      <UserAccountNavItemCntr />
     </div>
   );
 }

@@ -46,7 +46,7 @@ export default function AboutPage() {
                       href="https://github.com/oleksii-honchar/ts-react-tmpl"
                       className="relative top-[3px] text-md-sys-light-primary hover:text-md-sys-light-primary/70 hover:underline inline-flex items-center gap-1"
                     >
-                      <GithubIcon />
+                      <GithubIcon className="w-4 h-4" />
                       repo
                     </a>
                     .
