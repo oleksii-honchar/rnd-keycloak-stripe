@@ -25,11 +25,11 @@ export function UserAccountNavItemCntr() {
         data-id="UserAccountNavItemCntr"
         className={`
           flex flex-row justify-start items-center
-          p-2 border-l outline-none
+          p-2 outline-none
         `}
       >
         <span className="sm:hidden xl:block">
-          <UserCircleIcon className="w-8 h-8 text-md-ref-pal-primary" />
+          <UserCircleIcon className="w-8 h-8 text-md-ref-pal-primary bg-md-sys-light-surface-container-lowest rounded-[100px]" />
         </span>
       </TooltipTrigger>
       <TooltipContent

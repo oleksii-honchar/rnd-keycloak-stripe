@@ -7,9 +7,10 @@ export function PageNavbar() {
     <div
       id="PageNavbar"
       className={`
-        w-full mx-auto shadow-md h-10 sticky top-0 z-10
+        w-full mx-auto h-10 sticky top-0 z-10
         flex items-center justify-center
-        theme-bg-navbar
+        theme-navbar-bg
+        theme-navbar-shadow
       `}
     >
       <div

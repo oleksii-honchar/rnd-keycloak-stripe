@@ -11,12 +11,12 @@ export function Layout() {
     <div
       className={`
       flex min-h-screen w-full flex-col 
-      theme-bg-layout
+      theme-layout-bg
     `}
     >
       <ScrollToTop />
       <PageNavbar />
-      <main className="w-full flex flex-col flex-1 items-center justify-start">
+      <main className="w-full flex flex-col flex-1 items-center justify-start rounded-xl theme-main-bg">
         <Outlet />
         <ScrollDownIndicator />
       </main>

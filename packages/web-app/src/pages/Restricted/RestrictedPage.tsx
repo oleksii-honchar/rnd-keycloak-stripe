@@ -8,8 +8,8 @@ export default function RestrictedPage() {
       <div
         className={`
           w-full max-w-3xl md:max-w-4xl lg:max-w-6xl
-          rounded-lg  my-4 p-4 grow
-          bg-md-sys-light-surface-container-lowest
+          rounded-lg p-4 grow
+          theme-content-bg
         `}
       >
         <section className="flex flex-col justify-center ">

@@ -8,7 +8,7 @@ export function Footer() {
       className={`
         h-12 w-full
         backdrop-blur-sm 
-        theme-bg-footer
+        theme-footer-bg
       `}
     >
       <div className="w-full h-full">
@@ -17,7 +17,7 @@ export function Footer() {
           relative
           mx-auto w-full max-w-3xl md:max-w-4xl lg:max-w-6xl 
           justify-center  flex h-full px-2
-          text-md-sys-light-primary text-sm
+          text-md-sys-light-on-primary text-sm
         `}
         >
           <span className={`flex justify-center gap-2 items-center`}>
