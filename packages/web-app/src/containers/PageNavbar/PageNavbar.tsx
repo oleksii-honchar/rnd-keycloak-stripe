@@ -9,7 +9,7 @@ export function PageNavbar() {
       className={`
         w-full mx-auto shadow-md h-10 sticky top-0 z-10
         flex items-center justify-center
-        bg-md-sys-light-surface-container-lowest
+        theme-bg-navbar
       `}
     >
       <div

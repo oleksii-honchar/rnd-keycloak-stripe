@@ -47,8 +47,9 @@ export default function postCssConfig(params: {
 
   return {
     plugins: [
-      tailwind,
       postCssImport,
+      "tailwindcss/nesting",
+      tailwind,
       postCssPresetEnv,
       cssNanoCfg,
       // params.env === "production" ? purgeCssConfig : false, - still misses TailwindCSS

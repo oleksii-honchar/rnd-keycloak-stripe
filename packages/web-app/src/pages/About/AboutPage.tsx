@@ -11,7 +11,7 @@ export default function AboutPage() {
         className={`
           w-full max-w-3xl md:max-w-4xl lg:max-w-6xl
           rounded-lg  my-4 p-4 grow
-          bg-md-sys-light-surface-container-lowest
+          theme-bg-content
         `}
       >
         <section className="flex flex-col justify-center ">

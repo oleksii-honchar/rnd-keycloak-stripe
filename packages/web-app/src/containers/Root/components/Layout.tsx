@@ -11,10 +11,7 @@ export function Layout() {
     <div
       className={`
       flex min-h-screen w-full flex-col 
-      bg-[radial-gradient(ellipse_90%_50%_at_50%_10%,_var(--tw-gradient-stops))] 
-      bg-gradient-to-br
-      from-md-ref-pal-primary200 to-md-ref-pal-tertiary600
-      bg-contain bg-no-repeat bg-top bg-cover
+      theme-bg-layout
     `}
     >
       <ScrollToTop />

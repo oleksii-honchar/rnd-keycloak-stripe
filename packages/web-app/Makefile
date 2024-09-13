@@ -58,7 +58,7 @@ build-dev: clean-dist ## Build local version
 build-dev-analyze: ## Build local and analyze bundle content
 	$(MAKE) build-dev BUILD_ANALYZE=true
 
-dev: ## Launches local Webpack dev-server
+dev: clean-dist ## Launches local Webpack dev-server
 	@printf "${BG_GREY}[dev] Start${NC}\n"
 	@npx node --no-warnings --experimental-strip-types ./config/webpack-wrapper.ts\
 		--mode development --launch-server \

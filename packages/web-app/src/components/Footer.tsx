@@ -8,7 +8,7 @@ export function Footer() {
       className={`
         h-12 w-full
         backdrop-blur-sm 
-        bg-md-sys-light-surface-container-lowest
+        theme-bg-footer
       `}
     >
       <div className="w-full h-full">
@@ -21,8 +21,9 @@ export function Footer() {
         `}
         >
           <span className={`flex justify-center gap-2 items-center`}>
-            <CopyrightFilledIcon /> {moment().format("YYYY")} Oleksíi Honchar |
-            &quot;Keycloak + Stripe&quot; R&D
+            <CopyrightFilledIcon className="w-4 h-4" />{" "}
+            {moment().format("YYYY")} Oleksíi Honchar | &quot;Keycloak +
+            Stripe&quot; R&D
           </span>
           <span
             className={`

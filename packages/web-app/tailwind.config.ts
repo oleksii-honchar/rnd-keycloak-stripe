@@ -13,7 +13,7 @@ export default {
     translate: true,
   },
   content: {
-    files: ["./src/**/*.{html,js,ts,tsx,hbs}"],
+    files: ["./src/**/*.{html,js,ts,tsx,hbs,pcss,css}"],
   },
   theme: {
     extend: {
