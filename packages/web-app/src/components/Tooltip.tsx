@@ -1,3 +1,5 @@
+// https://floating-ui.com/docs/getting-started
+
 import type { Placement } from "@floating-ui/react";
 import {
   FloatingArrow,
@@ -34,6 +36,7 @@ interface TooltipOptions {
   useArrow?: boolean;
   allowedPlacements?: Placement[];
   dontOpenOnHover?: boolean;
+  gap?: number;
 }
 
 export function useTooltip({
@@ -46,6 +49,7 @@ export function useTooltip({
   enableHandleClose = false,
   debug = false,
   useArrow = true,
+  gap = 2,
 }: TooltipOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen);
 
@@ -54,8 +58,7 @@ export function useTooltip({
 
   debug && logger.log(`open=${open}`);
 
-  const ARROW_HEIGHT = 7;
-  const GAP = 2;
+  const ARROW_HEIGHT = useArrow ? 7 : 0;
   const arrowRef = useRef(null);
 
   // https://floating-ui.com/docs/react
@@ -69,7 +72,7 @@ export function useTooltip({
         arrow({
           element: arrowRef.current,
         }),
-      offset(ARROW_HEIGHT + GAP),
+      offset(ARROW_HEIGHT + gap),
       autoPlacement({
         crossAxis: true,
         allowedPlacements: allowedPlacements,

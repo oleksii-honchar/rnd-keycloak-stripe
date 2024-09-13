@@ -1,7 +1,10 @@
-import PropTypes from "prop-types";
 import React from "react";
 
-export const UserCircleIcon = ({ className = "" }) => (
+interface UserCircleIconProps {
+  className?: string;
+}
+
+export const UserCircleIcon = ({ className = "" }: UserCircleIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -19,7 +22,3 @@ export const UserCircleIcon = ({ className = "" }) => (
     />
   </svg>
 );
-
-UserCircleIcon.propTypes = {
-  className: PropTypes.string,
-};

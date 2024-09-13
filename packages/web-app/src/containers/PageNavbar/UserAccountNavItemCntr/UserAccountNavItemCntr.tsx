@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
+import { Menu, MenuDivider, MenuItem, MenuItems } from "components/menu";
 import { useRef } from "react";
 import {
   Tooltip,
@@ -7,7 +8,13 @@ import {
   TooltipTrigger,
 } from "src/components/Tooltip";
 
-import { UserCircleIcon } from "src/components/icons";
+import {
+  HelpCircleIcon,
+  LoginIcon,
+  SignupIcon,
+  SignUpIcon,
+  UserCircleIcon,
+} from "src/components/icons";
 
 export function UserAccountNavItemCntr() {
   // const [isOpen, setIsOpen] = useState(false);
@@ -19,31 +26,49 @@ export function UserAccountNavItemCntr() {
       useArrow={false}
       dontOpenOnHover
       allowedPlacements={["bottom", "bottom-end"]}
+      gap={8}
+      open
     >
       {/* Color & it's name */}
       <TooltipTrigger
         data-id="UserAccountNavItemCntr"
         className={`
           flex flex-row justify-start items-center
-          p-2 outline-none
+          outline-none
         `}
       >
         <span className="sm:hidden xl:block">
-          <UserCircleIcon className="w-8 h-8 text-md-ref-pal-primary bg-md-sys-light-surface-container-lowest rounded-[100px]" />
+          <UserCircleIcon className="w-8 h-8 text-md-sys-light-primary bg-md-sys-light-surface-container-lowest rounded-[100px]" />
         </span>
       </TooltipTrigger>
       <TooltipContent
         className={`
           flex flex-col justify-center items-center
           Tooltip
-          shadow-lg rounded-lg p-4
+          shadow-lg rounded-lg p-1
           backdrop-blur-sm
-          bg-md-sys-light-surface/50
+          bg-md-sys-light-surface-container-lowest/70
           border border-md-sys-light-outline-variant/60
         `}
         ref={ref}
       >
-        test
+        <Menu className="text-md-ref-pal-neutral-variant600 text-sm w-40">
+          <MenuItems>
+            <MenuItem>
+              <SignupIcon className="w-4 h-4 mr-2" />
+              Sing up
+            </MenuItem>
+            <MenuItem>
+              <LoginIcon className="w-4 h-4 mr-2" />
+              Log in
+            </MenuItem>
+            <MenuDivider />
+            <MenuItem>
+              <HelpCircleIcon className="w-4 h-4 mr-2" />
+              Help Center
+            </MenuItem>
+          </MenuItems>
+        </Menu>
       </TooltipContent>
     </Tooltip>
   );
