@@ -22,16 +22,28 @@
   /* @apply bg-md-sys-light-surface-container-lowest; */
 }
 
-.theme-layout-bg {
-  @apply bg-[radial-gradient(ellipse_90%_50%_at_50%_10%,_var(--tw-gradient-stops))] 
-  bg-gradient-to-br
-  from-md-ref-pal-primary100 to-md-ref-pal-tertiary600
-  bg-contain bg-no-repeat bg-top bg-cover;
+.theme-layout-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  /* filter: blur(1px); */
+  @apply bg-[url('/assets/images/noise.svg')] bg-repeat;
 }
+.theme-layout-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 
-.theme-layout0-bg {
-  @apply bg-[radial-gradient(ellipse_90%_50%_at_50%_10%,_var(--tw-gradient-stops))] 
+  @apply bg-[radial-gradient(ellipse_90%_50%_at_50%_10%,_var(--tw-gradient-stops))]
   bg-gradient-to-br
-  from-md-ref-pal-primary200 to-md-ref-pal-tertiary600
+  from-md-ref-pal-primary100 to-md-ref-pal-secondary600
   bg-contain bg-no-repeat bg-top bg-cover;
 }

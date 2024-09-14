@@ -18,7 +18,6 @@ export function Layout() {
       <PageNavbar />
       <main className="w-full flex flex-col flex-1 items-center justify-start rounded-xl theme-main-bg">
         <Outlet />
-        <ScrollDownIndicator />
       </main>
       <Footer />
       <ToastContainer position="bottom-right" />

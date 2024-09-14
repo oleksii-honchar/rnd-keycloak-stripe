@@ -58,6 +58,7 @@ export const cssModuleConfig = (env: any) => {
         options: {
           modules: false, // true cause to obfuscation
           importLoaders: 1,
+          url: false,
         },
       },
       {

@@ -59,28 +59,17 @@ export const moduleConfig = (env: any = {}) => {
           },
         },
         {
-          test: /\.(jpe?g|png|svg|gif|cur)$/,
+          test: /\.(jpe?g|png|gif|cur)$/,
           exclude: /icons/,
           use: {
             loader: "file-loader",
             options: {
-              name: "[name].[ext]",
+              name: "[name].[hash].[ext]",
               outputPath: "images/",
             },
           },
         },
-        {
-          test: /\.svg/,
-          include: /icons/,
-          use: [
-            {
-              loader: "svg-inline-loader",
-              options: {
-                removeSVGTagAttrs: false,
-              },
-            },
-          ],
-        },
+        // svg import covered by postcss-url in postcss.config.ts
       ],
       noParse: [/\.(spec|e2e|d)\.[tj]sx?$/, /LICENSE/, /README.md/],
     },

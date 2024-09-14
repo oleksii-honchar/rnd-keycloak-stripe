@@ -6,8 +6,7 @@ export function Footer() {
     <div
       id="Footer"
       className={`
-        h-12 w-full
-        backdrop-blur-sm 
+        h-6 w-full
         theme-footer-bg
       `}
     >

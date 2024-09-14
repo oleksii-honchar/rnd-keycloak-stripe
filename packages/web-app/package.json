@@ -80,6 +80,7 @@
     "postcss-import": "16.1.0",
     "postcss-loader": "8.1.1",
     "postcss-preset-env": "10.0.3",
+    "postcss-url": "^10.1.3",
     "prettier": "catalog:",
     "prop-types": "15.8.1",
     "react": "catalog:web-app",

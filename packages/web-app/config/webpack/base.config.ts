@@ -98,7 +98,8 @@ export const baseConfig = (env: any = {}) => {
       filename: `[name].bundle.${outputSuff}`,
       chunkFilename: `[name].bundle.${outputSuff}`,
       sourceMapFilename: `[name].${env.TS_TARGET}.map`,
-      publicPath: "/assets/",
+      // publicPath: "/assets/",
+      publicPath: "/",
     },
     plugins: [
       ...(env.LAUNCH_PROD_SERVER
