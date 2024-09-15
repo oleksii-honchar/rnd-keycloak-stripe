@@ -10,10 +10,12 @@ import {
 
 import {
   HelpCircleIcon,
-  LoginIcon,
+  LogInIcon,
+  LogOutIcon,
   SignupIcon,
   SignUpIcon,
   UserCircleIcon,
+  UserCogIcon,
 } from "src/components/icons";
 
 export function UserAccountNavItemCntr() {
@@ -68,10 +70,18 @@ export function UserAccountNavItemCntr() {
               Sing up
             </MenuItem>
             <MenuItem>
-              <LoginIcon className="w-4 h-4 mr-2" />
+              <LogInIcon className="w-4 h-4 mr-2" />
               Log in
             </MenuItem>
+            <MenuItem>
+              <LogOutIcon className="w-4 h-4 mr-2" />
+              Log out
+            </MenuItem>
             <MenuDivider />
+            <MenuItem>
+              <UserCogIcon className="w-4 h-4 mr-2" />
+              Account
+            </MenuItem>
             <MenuItem>
               <HelpCircleIcon className="w-4 h-4 mr-2" />
               Help Center
