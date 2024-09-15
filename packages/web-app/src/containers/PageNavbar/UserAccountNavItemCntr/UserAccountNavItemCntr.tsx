@@ -38,7 +38,16 @@ export function UserAccountNavItemCntr() {
         `}
       >
         <span className="sm:hidden xl:block">
-          <UserCircleIcon className="w-8 h-8 text-md-sys-light-primary bg-md-sys-light-surface-container-lowest rounded-[100px]" />
+          <UserCircleIcon
+            className={`
+              w-8 h-8 
+              text-md-sys-light-primary 
+              bg-md-sys-light-surface-container-lowest/70 
+              hover:bg-md-sys-light-surface-container-lowest
+              backdrop-blur-sm rounded-[100px]
+              transition-all duration-200
+            `}
+          />
         </span>
       </TooltipTrigger>
       <TooltipContent

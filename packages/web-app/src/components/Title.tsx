@@ -3,7 +3,7 @@ export function Title() {
     <p
       className={`
           grow
-          text-md-sys-light-primary
+          text-md-sys-light-on-primary
           font-bold
           text-xl 
         `}

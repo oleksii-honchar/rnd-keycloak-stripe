@@ -17,13 +17,13 @@ export function PageNavItems() {
           className={({ isActive }) => {
             return classNames(
               isActive
-                ? "text-md-sys-light-on-primary bg-md-sys-light-primary"
-                : `text-md-sys-light-primary
+                ? "text-md-sys-light-on-primary bg-md-ref-pal-primary400/70"
+                : `text-md-sys-light-on-primary
                    hover:text-md-sys-light-on-primary
-                   hover:bg-md-sys-light-primary`,
+                   hover:bg-md-ref-pal-primary300/70`,
               `
-                active:bg-md-ref-pal-primary200
-                px-3 py-4 
+                active:bg-md-ref-pal-primary200/70
+                px-3 py-1 rounded-xl backdrop-blur-sm
                 text-sm font-medium no-underline 
                 transition-all duration-200 
                 focus:outline-none
