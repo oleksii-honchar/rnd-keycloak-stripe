@@ -5,7 +5,8 @@ export function Title() {
           grow
           text-md-sys-light-on-primary
           font-bold
-          text-xl 
+          text-sm
+          md:text-md lg:text-lg
         `}
     >
       &quot;Keycloak + Stripe&quot; R&D

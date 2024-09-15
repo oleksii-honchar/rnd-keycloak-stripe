@@ -9,7 +9,12 @@ export function PageNavItems() {
   ];
 
   return (
-    <div className="flex flex-row space-x-4 h-10 items-center justify-center overflow-hidden ">
+    <div
+      className={`
+        flex flex-row space-x-1 sm:space-x-4 h-10 items-center justify-center overflow-hidden 
+        max-w-sm
+      `}
+    >
       {navItems.map((item) => (
         <NavLink
           key={item.name}
@@ -23,8 +28,8 @@ export function PageNavItems() {
                    hover:bg-md-ref-pal-primary300/70`,
               `
                 active:bg-md-ref-pal-primary200/70
-                px-3 py-1 rounded-xl backdrop-blur-sm
-                text-sm font-medium no-underline 
+                px-2 sm:px-3 py-1 rounded-xl backdrop-blur-sm
+                text-[8px] sm:text-sm font-medium no-underline 
                 transition-all duration-200 
                 focus:outline-none
               `,

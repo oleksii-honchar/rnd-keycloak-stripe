@@ -16,7 +16,7 @@ export function PageNavbar() {
       <div
         className={`
           w-full  px-2 
-          max-w-3xl md:max-w-4xl lg:max-w-6xl 
+          md:max-w-6xl lg:max-w-6xl 
           relative flex h-10 space-x-2
           items-center justify-start
         `}

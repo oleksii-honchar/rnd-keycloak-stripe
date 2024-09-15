@@ -39,10 +39,10 @@ export function UserAccountNavItemCntr() {
           outline-none
         `}
       >
-        <span className="sm:hidden xl:block">
+        <span className="xs:hidden md:block xl:block">
           <UserCircleIcon
             className={`
-              w-8 h-8 
+              w-6 h-6 sm:w-8 sm:h-8 
               text-md-sys-light-primary 
               bg-md-sys-light-surface-container-lowest/70 
               hover:bg-md-sys-light-surface-container-lowest

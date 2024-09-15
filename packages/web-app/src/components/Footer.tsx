@@ -19,7 +19,12 @@ export function Footer() {
           text-md-sys-light-on-primary text-sm
         `}
         >
-          <span className={`flex justify-center gap-2 items-center`}>
+          <span
+            className={`
+              flex justify-center gap-2 items-center
+              text-[8px] sm:text-sm
+            `}
+          >
             <CopyrightFilledIcon className="w-4 h-4" />{" "}
             {moment().format("YYYY")} Oleksíi Honchar | &quot;Keycloak +
             Stripe&quot; R&D
@@ -27,7 +32,8 @@ export function Footer() {
           <span
             className={`
               gap-2 absolute bottom-0 right-0
-              text-[10px] text-md-sys-on-background
+              text-[6px] sm:text-[10px]
+              text-md-sys-on-background
             `}
           >
             v{process.env.BUILD_VERSION}
