@@ -3,9 +3,14 @@ import { ReactNode } from "react";
 interface MenuItemProps {
   children: ReactNode | ReactNode[];
   className?: string;
+  onClick?: () => void; // Add onClick prop
 }
 
-export const MenuItem = ({ children, className = "" }: MenuItemProps) => {
+export const MenuItem = ({
+  children,
+  className = "",
+  onClick,
+}: MenuItemProps) => {
   return (
     <div
       className={
@@ -19,6 +24,7 @@ export const MenuItem = ({ children, className = "" }: MenuItemProps) => {
         " " +
         className
       }
+      onClick={onClick} // Attach onClick handler
     >
       {children}
     </div>

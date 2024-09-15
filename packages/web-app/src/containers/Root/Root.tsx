@@ -7,6 +7,7 @@ import {
 
 import { BigSpinner } from "src/components/BigSpinner";
 import { ErrorBoundary } from "src/components/ErrorBoundary";
+import { ProtectedRoute } from "src/components/ProtectedRoute";
 import { KeyCloakContextProvider } from "src/contexts/KeyCloakContext";
 import { NavContextProvider } from "src/contexts/NavigationContext";
 import { Layout } from "./components/Layout";
@@ -42,7 +43,11 @@ const router = createBrowserRouter([
       },
       {
         path: "restricted",
-        element: <RestrictedPage />,
+        element: (
+          <ProtectedRoute>
+            <RestrictedPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

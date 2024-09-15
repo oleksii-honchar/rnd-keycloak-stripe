@@ -34,7 +34,11 @@ export const KeyCloakContextProvider = ({
   useEffect(() => {
     keycloak = new Keycloak(config);
     keycloak
-      .init({})
+      .init({
+        onLoad: "check-sso",
+        silentCheckSsoRedirectUri:
+          window.location.origin + "/silent-check-sso.html",
+      })
       .then((auth) => {
         setKeycloakInitialized(true);
         if (auth) {

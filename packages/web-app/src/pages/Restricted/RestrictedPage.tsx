@@ -27,8 +27,19 @@ export default function RestrictedPage() {
           <div className="container mx-auto text-left">
             <div className="flex flex-col items-start w-full">
               <h1 className="text-3xl font-medium mb-6">Resticted page</h1>
-              <div className="w-full flex flex-row items-center">
-                <p className="text-l mb-2">TBD</p>
+              <div className="w-full flex flex-row items-start">
+                <div className="w-1/2">
+                  <p className="font-bold">idTokenParsed</p>
+                  <pre className="text-[12px]">
+                    {JSON.stringify(keycloak?.idTokenParsed, null, 2)}
+                  </pre>
+                </div>
+                <div className="w-1/2">
+                  <p className="font-bold">tokenParsed</p>
+                  <pre className="text-[12px]">
+                    {JSON.stringify(keycloak?.tokenParsed, null, 2)}
+                  </pre>
+                </div>
               </div>
             </div>
           </div>

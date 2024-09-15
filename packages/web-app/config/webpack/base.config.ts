@@ -56,7 +56,7 @@ export const baseConfig = (env: any = {}) => {
               "**/*.hbs",
               "**/.DS_Store",
               "**/index.hbs",
-              "**/favicons/**",
+              "**/assets/icons/**",
             ],
           },
         },
@@ -65,8 +65,8 @@ export const baseConfig = (env: any = {}) => {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: "./src/assets/favicons",
-          to: "../favicons",
+          from: "./src/assets/icons",
+          to: "../assets/icons",
         },
       ],
     }),

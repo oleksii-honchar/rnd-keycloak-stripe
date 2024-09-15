@@ -1,12 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 import { Menu, MenuDivider, MenuItem, MenuItems } from "components/menu";
-import { useRef } from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "src/components/Tooltip";
+import { useContext, useRef } from "react";
 
 import {
   HelpCircleIcon,
@@ -16,9 +11,18 @@ import {
   UserCircleIcon,
   UserCogIcon,
 } from "src/components/icons";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "src/components/Tooltip";
+import { KeyCloakContext } from "src/contexts/KeyCloakContext";
+import { getLogger } from "src/utils/getLogger";
+
+const logger = getLogger("UserAccountNavItemCntr");
 
 export function UserAccountNavItemCntr() {
-  // const [isOpen, setIsOpen] = useState(false);
+  const { keycloak } = useContext(KeyCloakContext); // Get keycloak instance
   const ref = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -64,24 +68,44 @@ export function UserAccountNavItemCntr() {
       >
         <Menu className="text-md-ref-pal-neutral-variant600 text-sm w-40">
           <MenuItems>
-            <MenuItem>
+            <MenuItem
+              onClick={() => {
+                keycloak?.register();
+              }}
+            >
               <SignUpIcon className="w-4 h-4 mr-2" />
               Sing up
             </MenuItem>
-            <MenuItem>
+            <MenuItem
+              onClick={() => {
+                keycloak?.login();
+              }}
+            >
               <LogInIcon className="w-4 h-4 mr-2" />
               Log in
             </MenuItem>
-            <MenuItem>
+            <MenuItem
+              onClick={() => {
+                keycloak?.logout();
+              }}
+            >
               <LogOutIcon className="w-4 h-4 mr-2" />
               Log out
             </MenuItem>
             <MenuDivider />
-            <MenuItem>
+            <MenuItem
+              onClick={async () => {
+                await keycloak?.accountManagement();
+              }}
+            >
               <UserCogIcon className="w-4 h-4 mr-2" />
               Account
             </MenuItem>
-            <MenuItem>
+            <MenuItem
+              onClick={() => {
+                logger.info("Not available currently");
+              }}
+            >
               <HelpCircleIcon className="w-4 h-4 mr-2" />
               Help Center
             </MenuItem>
