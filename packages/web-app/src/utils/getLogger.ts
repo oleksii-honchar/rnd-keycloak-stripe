@@ -18,6 +18,14 @@ const customTransport = {
       console.error(message);
     }
   },
+  warn: (obj: Record<string, any>) => {
+    const message = `[${obj.name}] ${obj.msg}`;
+    if (nl.omit(obj, ["time", "level", "name", "msg"]).length > 0) {
+      console.warn(message, obj);
+    } else {
+      console.warn(message);
+    }
+  },
 };
 
 export function getLogger(name: string) {

@@ -7,6 +7,7 @@ import {
 
 import { BigSpinner } from "src/components/BigSpinner";
 import { ErrorBoundary } from "src/components/ErrorBoundary";
+import { KeyCloakContextProvider } from "src/contexts/KeyCloakContext";
 import { NavContextProvider } from "src/contexts/NavigationContext";
 import { Layout } from "./components/Layout";
 
@@ -46,12 +47,21 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+const keycloakConfig = {
+  url: process.env.KEYCLOAK_URL as string,
+  realm: process.env.KEYCLOAK_REALM as string,
+  clientId: process.env.KEYCLOAK_CLIENT_ID as string,
+};
+
 export function Root(): ReactElement {
   return (
     <Suspense fallback={<BigSpinner />}>
-      <NavContextProvider>
-        <RouterProvider router={router} />
-      </NavContextProvider>
+      <KeyCloakContextProvider config={keycloakConfig}>
+        <NavContextProvider>
+          <RouterProvider router={router} />
+        </NavContextProvider>
+      </KeyCloakContextProvider>
     </Suspense>
   );
 }

@@ -4,6 +4,6 @@ export * from "./HelpCircleIcon";
 export * from "./HomeFilledIcon";
 export * from "./LogInIcon";
 export * from "./LogOutIcon";
-export * from "./SignupIcon";
+export * from "./SignUpIcon";
 export * from "./UserCircleIcon";
 export * from "./UserCogIcon";

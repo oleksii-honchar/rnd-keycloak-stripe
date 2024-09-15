@@ -12,7 +12,6 @@ import {
   HelpCircleIcon,
   LogInIcon,
   LogOutIcon,
-  SignupIcon,
   SignUpIcon,
   UserCircleIcon,
   UserCogIcon,
@@ -20,7 +19,7 @@ import {
 
 export function UserAccountNavItemCntr() {
   // const [isOpen, setIsOpen] = useState(false);
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement | null>(null);
 
   return (
     <Tooltip
@@ -66,7 +65,7 @@ export function UserAccountNavItemCntr() {
         <Menu className="text-md-ref-pal-neutral-variant600 text-sm w-40">
           <MenuItems>
             <MenuItem>
-              <SignupIcon className="w-4 h-4 mr-2" />
+              <SignUpIcon className="w-4 h-4 mr-2" />
               Sing up
             </MenuItem>
             <MenuItem>

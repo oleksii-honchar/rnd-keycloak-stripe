@@ -1,4 +1,15 @@
+import { useContext, useEffect } from "react";
+import { KeyCloakContext } from "src/contexts/KeyCloakContext";
+
 export default function RestrictedPage() {
+  const { keycloak } = useContext(KeyCloakContext);
+
+  useEffect(() => {
+    if (!keycloak?.authenticated) {
+      keycloak?.login();
+    }
+  }, []);
+
   return (
     <article
       className={`

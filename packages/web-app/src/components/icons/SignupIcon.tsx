@@ -1,10 +1,10 @@
 import React from "react";
 
-interface SignupIconProps {
+interface SignUpIconProps {
   className?: string;
 }
 
-export const SignupIcon = ({ className = "" }: SignupIconProps) => (
+export const SignUpIcon = ({ className = "" }: SignUpIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={`icon ${className}`}

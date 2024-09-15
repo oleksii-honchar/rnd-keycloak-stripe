@@ -14,3 +14,12 @@ ifndef NODE_ENV
 	@printf "${YELLOW}NODE_ENV not provided. Using ${BOLD_ON}'NODE_ENV=development'${BOLD_OFF} as default${NC}\n"
   export NODE_ENV = development
 endif
+
+platform-up: check-node-env ## Start the platform using docker-compose
+	@docker-compose up -d
+
+platform-down: check-node-env ## Stop the platform using docker-compose
+	@docker-compose down
+
+platform-logs: check-node-env ## Show the logs of the platform using docker-compose
+	@docker-compose logs -f

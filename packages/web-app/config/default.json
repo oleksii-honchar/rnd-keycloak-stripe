@@ -3,6 +3,11 @@
     "containerName": "rnd-keycloak-stripe-app",
     "imageName": "tuiteraz/rnd-keycloak-stripe-app"
   },
+  "keycloak": {
+    "url": "http://localhost:8100",
+    "realm": "your-realm",
+    "clientId": "your-client-id"
+  },
   "runtime": {
     "environment": "development",
     "logLevel": "debug",

@@ -37,6 +37,9 @@ export const baseConfig = (env: any = {}) => {
         PKG_NAME: JSON.stringify(pkg.name),
         PKG_VERSION: JSON.stringify(pkg.version),
         BUILD_VERSION: JSON.stringify(moment().format("YYYYMMDDHHmmss")),
+        KEYCLOAK_URL: JSON.stringify(config.get("keycloak.url")),
+        KEYCLOAK_REALM: JSON.stringify(config.get("keycloak.realm")),
+        KEYCLOAK_CLIENT_ID: JSON.stringify(config.get("keycloak.clientId")),
       },
     }),
     new webpack.LoaderOptionsPlugin({
@@ -75,6 +78,9 @@ export const baseConfig = (env: any = {}) => {
     cache: true,
     devtool: nodeEnv === "production" ? false : "inline-source-map",
     resolve: {
+      fallback: {
+        os: false,
+      },
       extensions: [".js", ".jsx", ".html", ".ts", ".tsx", ".css", ".pcss"],
       // Add support for TypeScripts fully qualified ESM imports.
       extensionAlias: {
