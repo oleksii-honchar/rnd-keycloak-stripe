@@ -1,0 +1,76 @@
+{
+  "realm": "rnd",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "react-app",
+      "enabled": true,
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": [
+        "http://localhost:8000/*"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "olho",
+      "enabled": true,
+      "email": "olho@keycloak.org",
+      "firstName": "Ol",
+      "lastName": "Ho",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "olho"
+        }
+      ],
+      "realmRoles": [
+        "user",
+        "offline_access"
+      ],
+      "clientRoles": {
+        "account": [
+          "manage-account"
+        ]
+      }
+    },
+    {
+      "username": "admin",
+      "enabled": true,
+      "email": "test@admin.org",
+      "firstName": "Admin",
+      "lastName": "Test",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin"
+        }
+      ],
+      "realmRoles": [
+        "user",
+        "admin"
+      ],
+      "clientRoles": {
+        "realm-management": [
+          "realm-admin"
+        ],
+        "account": [
+          "manage-account"
+        ]
+      }
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "user",
+        "description": "User privileges"
+      },
+      {
+        "name": "admin",
+        "description": "Administrator privileges"
+      }
+    ]
+  }
+}

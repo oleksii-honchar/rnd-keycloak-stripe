@@ -122,6 +122,9 @@ importers:
       '@dotenvx/dotenvx':
         specifier: 'catalog:'
         version: 1.14.0
+      '@keycloak/keycloak-admin-client':
+        specifier: ^25.0.5
+        version: 25.0.5
       turbo:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1304,6 +1307,10 @@ packages:
     peerDependencies:
       tslib: '2'
 
+  '@keycloak/keycloak-admin-client@25.0.5':
+    resolution: {integrity: sha512-IpCKVyBbDm3oIEImszXRQFA3IefrdIxCaPykwNjlFlvfZ6E+Ma7GyNXlT3oukPlAeCgPG+zM/sHcooWZ6ZUl/Q==}
+    engines: {node: '>=18'}
+
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
 
@@ -2085,6 +2092,10 @@ packages:
   camelcase@6.3.0:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
+
+  camelize-ts@3.0.0:
+    resolution: {integrity: sha512-cgRwKKavoDKLTjO4FQTs3dRBePZp/2Y9Xpud0FhuCOTE86M2cniKN4CCXgRnsyXNMmQMifVHcv6SPaMtTx6ofQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
@@ -5455,6 +5466,14 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
+  url-join@5.0.0:
+    resolution: {integrity: sha512-n2huDr9h9yzd6exQVnH/jU5mr+Pfx08LRXXZhkLLetAMESRj+anQsTAh940iMrIetKAmry9coFuZQ2jY8/p3WA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  url-template@3.1.1:
+    resolution: {integrity: sha512-4oszoaEKE/mQOtAmdMWqIRHmkxWkUZMnXFnjQ5i01CuRSK3uluxcH1MRVVVWmhlnzT1SCDfKxxficm2G37qzCA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
@@ -6618,6 +6637,12 @@ snapshots:
     dependencies:
       tslib: 2.7.0
 
+  '@keycloak/keycloak-admin-client@25.0.5':
+    dependencies:
+      camelize-ts: 3.0.0
+      url-join: 5.0.0
+      url-template: 3.1.1
+
   '@leichtgewicht/ip-codec@2.0.5': {}
 
   '@noble/ciphers@0.5.3': {}
@@ -7567,6 +7592,8 @@ snapshots:
   camelcase@5.3.1: {}
 
   camelcase@6.3.0: {}
+
+  camelize-ts@3.0.0: {}
 
   caniuse-api@3.0.0:
     dependencies:
@@ -11398,6 +11425,10 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  url-join@5.0.0: {}
+
+  url-template@3.1.1: {}
 
   util-deprecate@1.0.2: {}
 

@@ -23,3 +23,6 @@ platform-down: check-node-env ## Stop the platform using docker-compose
 
 platform-logs: check-node-env ## Show the logs of the platform using docker-compose
 	@docker-compose logs -f
+
+import-realm:
+	@node --no-warnings --experimental-strip-types scripts/create-realm.ts
