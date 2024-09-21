@@ -125,6 +125,15 @@ importers:
       '@keycloak/keycloak-admin-client':
         specifier: ^25.0.5
         version: 25.0.5
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.5.4
+      pino:
+        specifier: 'catalog:'
+        version: 9.4.0
+      pino-pretty:
+        specifier: 'catalog:'
+        version: 11.2.2
       turbo:
         specifier: ^2.1.1
         version: 2.1.1

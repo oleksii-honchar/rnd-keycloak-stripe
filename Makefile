@@ -2,6 +2,11 @@ ifneq (,$(wildcard ./.env))
 	include ./.env
 endif
 
+export SMTP_USER=$(shell security find-generic-password -s "SMTP_USER" -w)
+export SMTP_PASSWORD=$(shell security find-generic-password -s "SMTP_PASSWORD" -w)
+export SMTP_HOST=$(shell security find-generic-password -s "SMTP_HOST" -w)
+
+
 .PHONY: help
 
 help:
@@ -15,14 +20,20 @@ ifndef NODE_ENV
   export NODE_ENV = development
 endif
 
+check-realm: ## Check if rnd realm added to the container
+	@pnpm dotenvx -- node --no-warnings --experimental-strip-types scripts/check-realm.ts | npx pino-pretty
+
 platform-up: check-node-env ## Start the platform using docker-compose
 	@docker-compose up -d
+	@make check-realm
 
 platform-down: check-node-env ## Stop the platform using docker-compose
 	@docker-compose down
 
+platform-restart: check-node-env ## Stop the platform using docker-compose
+	@docker-compose down
+	@docker-compose up -d
+	@make check-realm
+
 platform-logs: check-node-env ## Show the logs of the platform using docker-compose
 	@docker-compose logs -f
-
-import-realm:
-	@node --no-warnings --experimental-strip-types scripts/create-realm.ts

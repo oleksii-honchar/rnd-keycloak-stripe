@@ -4,7 +4,7 @@
     "imageName": "tuiteraz/rnd-keycloak-stripe-app"
   },
   "keycloak": {
-    "url": "http://localhost:8100",
+    "url": "http://localhost:0000",
     "realm": "your-realm",
     "clientId": "your-client-id"
   },

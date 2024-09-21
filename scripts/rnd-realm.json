@@ -1,6 +1,27 @@
 {
   "realm": "rnd",
   "enabled": true,
+  "registrationAllowed": true,
+  "registrationEmailAsUsername": true,
+  "verifyEmail": true,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "smtpServer": {
+    "password": "***",
+    "replyToDisplayName": "Keycloak[dev]",
+    "starttls": "true",
+    "auth": "true",
+    "port": "587",
+    "replyTo": "***",
+    "host": "***",
+    "from": "***",
+    "fromDisplayName": "Keycloak[dev]",
+    "envelopeFrom": "",
+    "ssl": "false",
+    "user": "***"
+  },
   "clients": [
     {
       "clientId": "react-app",
@@ -39,6 +60,7 @@
       "username": "admin",
       "enabled": true,
       "email": "test@admin.org",
+      "emailVerified": true,
       "firstName": "Admin",
       "lastName": "Test",
       "credentials": [
@@ -72,5 +94,8 @@
         "description": "Administrator privileges"
       }
     ]
+  },
+  "attributes": {
+    "frontendUrl": "http://localhost:8000"
   }
 }

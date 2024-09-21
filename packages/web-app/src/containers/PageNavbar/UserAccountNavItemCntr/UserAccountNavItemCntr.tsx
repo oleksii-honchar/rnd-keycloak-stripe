@@ -1,13 +1,15 @@
 /** @jsx jsx */
+/** @jsxFrag React.Fragment */
 import { jsx } from "@emotion/react";
 import { Menu, MenuDivider, MenuItem, MenuItems } from "components/menu";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import {
   HelpCircleIcon,
   LogInIcon,
   LogOutIcon,
   SignUpIcon,
+  UserCircleFilledIcon,
   UserCircleIcon,
   UserCogIcon,
 } from "src/components/icons";
@@ -23,7 +25,22 @@ const logger = getLogger("UserAccountNavItemCntr");
 
 export function UserAccountNavItemCntr() {
   const { keycloak } = useContext(KeyCloakContext); // Get keycloak instance
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setIsAuthenticated(keycloak?.authenticated ?? false);
+  }, [keycloak?.authenticated]);
+
+  const commonUserIconStyle = `
+    w-6 h-6 sm:w-8 sm:h-8 
+    text-md-sys-light-primary 
+    bg-md-sys-light-surface-container-lowest/70 
+    hover:bg-md-sys-light-surface-container-lowest
+    backdrop-blur-sm rounded-[100px]
+    transition-all duration-200
+  `;
 
   return (
     <Tooltip
@@ -32,7 +49,6 @@ export function UserAccountNavItemCntr() {
       dontOpenOnHover
       allowedPlacements={["bottom", "bottom-end"]}
       gap={8}
-      open
     >
       {/* Color & it's name */}
       <TooltipTrigger
@@ -43,16 +59,11 @@ export function UserAccountNavItemCntr() {
         `}
       >
         <span className="xs:hidden md:block xl:block">
-          <UserCircleIcon
-            className={`
-              w-6 h-6 sm:w-8 sm:h-8 
-              text-md-sys-light-primary 
-              bg-md-sys-light-surface-container-lowest/70 
-              hover:bg-md-sys-light-surface-container-lowest
-              backdrop-blur-sm rounded-[100px]
-              transition-all duration-200
-            `}
-          />
+          {isAuthenticated ? (
+            <UserCircleFilledIcon className={commonUserIconStyle} />
+          ) : (
+            <UserCircleIcon className={commonUserIconStyle} />
+          )}
         </span>
       </TooltipTrigger>
       <TooltipContent
@@ -68,39 +79,47 @@ export function UserAccountNavItemCntr() {
       >
         <Menu className="text-md-ref-pal-neutral-variant600 text-sm w-40">
           <MenuItems>
-            <MenuItem
-              onClick={() => {
-                keycloak?.register();
-              }}
-            >
-              <SignUpIcon className="w-4 h-4 mr-2" />
-              Sing up
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                keycloak?.login();
-              }}
-            >
-              <LogInIcon className="w-4 h-4 mr-2" />
-              Log in
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                keycloak?.logout();
-              }}
-            >
-              <LogOutIcon className="w-4 h-4 mr-2" />
-              Log out
-            </MenuItem>
+            {!isAuthenticated && (
+              <>
+                <MenuItem
+                  onClick={() => {
+                    keycloak?.register();
+                  }}
+                >
+                  <SignUpIcon className="w-4 h-4 mr-2" />
+                  Sing up
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    keycloak?.login();
+                  }}
+                >
+                  <LogInIcon className="w-4 h-4 mr-2" />
+                  Log in
+                </MenuItem>
+              </>
+            )}
+            {isAuthenticated && (
+              <>
+                <MenuItem
+                  onClick={() => {
+                    keycloak?.logout();
+                  }}
+                >
+                  <LogOutIcon className="w-4 h-4 mr-2" />
+                  Log out
+                </MenuItem>
+                <MenuItem
+                  onClick={async () => {
+                    await keycloak?.accountManagement();
+                  }}
+                >
+                  <UserCogIcon className="w-4 h-4 mr-2" />
+                  Account
+                </MenuItem>
+              </>
+            )}
             <MenuDivider />
-            <MenuItem
-              onClick={async () => {
-                await keycloak?.accountManagement();
-              }}
-            >
-              <UserCogIcon className="w-4 h-4 mr-2" />
-              Account
-            </MenuItem>
             <MenuItem
               onClick={() => {
                 logger.info("Not available currently");

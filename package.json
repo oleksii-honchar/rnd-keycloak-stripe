@@ -18,7 +18,7 @@
     "debug": "NODE_ENV=development dotenvx run -- turbo debug --continue --concurrency=3",
     "debug:json-logs": "NODE_ENV=development dotenvx run -- turbo debug:json-logs --continue --concurrency=3",
     "dev": "NODE_ENV=development dotenvx run -- make platform-up && turbo dev --continue --concurrency=3",
-    "dev:json-logs": "NODE_ENV=development dotenvx run -- turbo dev:json-logs --continue --concurrency=3",
+    "dev:json-logs": "NODE_ENV=development dotenvx run -- make platform-up && turbo dev:json-logs --continue --concurrency=3",
     "dotenvx": "dotenvx run --env-file .env",
     "lint:check": "turbo lint:check",
     "lint:fix": "turbo lint:fix",
@@ -32,6 +32,9 @@
   "devDependencies": {
     "@dotenvx/dotenvx": "catalog:",
     "@keycloak/keycloak-admin-client": "^25.0.5",
+    "@types/node": "catalog:",
+    "pino": "catalog:",
+    "pino-pretty": "catalog:",
     "turbo": "^2.1.1"
   },
   "packageManager": "pnpm@9.10.0",

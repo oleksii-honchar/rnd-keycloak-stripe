@@ -5,5 +5,6 @@ export * from "./HomeFilledIcon";
 export * from "./LogInIcon";
 export * from "./LogOutIcon";
 export * from "./SignUpIcon";
+export * from "./UserCircleFilledIcon";
 export * from "./UserCircleIcon";
 export * from "./UserCogIcon";

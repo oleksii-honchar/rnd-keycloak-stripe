@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .theme-navbar-bg {
-  /* @apply bg-md-sys-light-surface-container-lowest; */
+  background-color: initial; /* Your initial background color */
 }
 
 .theme-navbar-shadow {
@@ -23,5 +23,9 @@
 }
 
 .theme-layout-bg {
-  @apply bg-[url('/assets/images/noise-background.png')] bg-cover bg-no-repeat bg-center;
+  @apply bg-[url('/assets/images/noise-background.png')] bg-cover bg-fixed bg-top;
+}
+
+.theme-navbar-bg-scrolled {
+  background-color: newColor; /* Your new background color when scrolled */
 }
