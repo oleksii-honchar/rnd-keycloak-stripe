@@ -4,9 +4,10 @@ services:
     container_name: keycloak
     environment:
       - TZ=Europe/Madrid
-      - KEYCLOAK_ADMIN=admin # should be overwritten by "make check-realm"
-      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KEYCLOAK_ADMIN=$KEYCLOAK_ADMIN
+      - KEYCLOAK_ADMIN_PASSWORD=$KEYCLOAK_ADMIN_PASSWORD
       - PROXY_ADDRESS_FORWARDING=true
+      - JAVA_OPTS=-Dkeycloak.socket-bindings.https.max-queued-requests=$KEYCLOAK_MAX_QUEUED_REQUESTS
     ports:
       - '8100:8080'
-    command: start-dev
+    command: start-dev --hostname $KEYCLOAK_FRONTEND_URL --hostname-backchannel-dynamic true

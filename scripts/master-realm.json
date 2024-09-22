@@ -1,10 +1,10 @@
 {
-  "realm": "rnd",
+  "realm": "master",
   "enabled": true,
-  "registrationAllowed": true,
-  "registrationEmailAsUsername": true,
-  "verifyEmail": true,
-  "loginWithEmailAllowed": true,
+  "registrationAllowed": false,
+  "registrationEmailAsUsername": false,
+  "verifyEmail": false,
+  "loginWithEmailAllowed": false,
   "duplicateEmailsAllowed": false,
   "resetPasswordAllowed": true,
   "editUsernameAllowed": false,
@@ -30,29 +30,6 @@
     "envelopeFrom": "",
     "ssl": "false",
     "user": "***"
-  },
-  "clients": [
-    {
-      "clientId": "react-app",
-      "enabled": true,
-      "publicClient": true,
-      "directAccessGrantsEnabled": true,
-      "redirectUris": [
-        "http://localhost:8000/*"
-      ]
-    }
-  ],
-  "roles": {
-    "realm": [
-      {
-        "name": "user",
-        "description": "User privileges"
-      },
-      {
-        "name": "admin",
-        "description": "Administrator privileges"
-      }
-    ]
   },
   "attributes": {
     "frontendUrl": "http://auth.keycloak.tld"
