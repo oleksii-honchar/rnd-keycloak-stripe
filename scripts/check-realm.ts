@@ -84,6 +84,7 @@ logger.info({ adminUser }, 'Updating admin email ...');
 
 if (adminUser) {
   await adminClient.users.update(
+    // @ts-expect-error
     { id: adminUser.id, realm: adminClientConfig.realmName },
     {
       email: process.env.KEYCLOAK_ADMIN_EMAIL || 'default_admin@example.com',
@@ -94,6 +95,7 @@ if (adminUser) {
 logger.info(`Realm ${rndRealmConfig.realm} created successfully.`);
 
 logger.info('Updating master realm ...');
+// @ts-expect-error
 const masterRealm = await adminClient.realms.find({ realm: 'master' });
 if (masterRealm) {
   await adminClient.realms.update({ realm: 'master' }, masterRealmConfig);

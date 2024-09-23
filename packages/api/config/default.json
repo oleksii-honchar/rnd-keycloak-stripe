@@ -6,6 +6,7 @@
   "runtime": {
     "environment": "development",
     "logLevel": "debug",
-    "port": 8010
+    "port": 8010,
+    "host": "http://localhost"
   }
 }
