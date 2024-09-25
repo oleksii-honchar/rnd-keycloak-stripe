@@ -56,5 +56,29 @@
   },
   "attributes": {
     "frontendUrl": "http://auth.keycloak.tld"
-  }
+  },
+  "identityProviders": [
+    {
+      "alias": "google",
+      "internalId": "4a2a785b-514c-4611-8a8a-cc974cd92d0b",
+      "providerId": "google",
+      "enabled": true,
+      "updateProfileFirstLoginMode": "on",
+      "trustEmail": false,
+      "storeToken": false,
+      "addReadTokenRoleOnCreate": false,
+      "authenticateByDefault": false,
+      "linkOnly": false,
+      "config": {
+        "hideOnLoginPage": "false",
+        "clientId": "$GCP_OAUTH_CLIENT_ID",
+        "acceptsPromptNoneForwardFromClient": "false",
+        "disableUserInfo": "false",
+        "syncMode": "LEGACY",
+        "filteredByClaim": "false",
+        "clientSecret": "$GCP_OAUTH_CLIENT_SECRET",
+        "caseSensitiveOriginalUsername": "false"
+      }
+    }
+  ]
 }

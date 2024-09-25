@@ -62,6 +62,8 @@ rndRealmConfig.smtpServer.password = process.env.SMTP_PASSWORD;
 rndRealmConfig.smtpServer.replyTo = process.env.SMTP_REPLY_TO;
 rndRealmConfig.smtpServer.from = process.env.SMTP_REPLY_TO;
 rndRealmConfig.attributes['frontendUrl'] = process.env.KEYCLOAK_FRONTEND_URL;
+rndRealmConfig.identityProviders[0].config.clientId = process.env.GCP_OAUTH_CLIENT_ID;
+rndRealmConfig.identityProviders[0].config.clientSecret = process.env.GCP_OAUTH_CLIENT_SECRET;
 
 masterRealmConfig.smtpServer.host = smtpHost;
 masterRealmConfig.smtpServer.user = process.env.SMTP_USER;
@@ -80,7 +82,7 @@ await adminClient.realms.create(rndRealmConfig);
 const users = await adminClient.users.find({ realm: adminClientConfig.realmName });
 const adminUser = users.find(user => user.username === process.env.KEYCLOAK_ADMIN);
 
-logger.info({ adminUser }, 'Updating admin email ...');
+logger.info('Updating admin email ...');
 
 if (adminUser) {
   await adminClient.users.update(
