@@ -8,5 +8,12 @@
     "logLevel": "debug",
     "port": 8010,
     "host": "http://localhost"
+  },
+  "ai-providers": {
+    "default": "open-ai",
+    "open-ai": {
+      "apiKey": "***",
+      "default-model": "gpt-4o-mini"
+    }
   }
 }

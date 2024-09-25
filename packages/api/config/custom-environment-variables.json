@@ -2,5 +2,10 @@
   "runtime": {
     "environment": "NODE_ENV",
     "host": "API_HOST"
+  },
+  "ai-providers": {
+    "open-ai": {
+      "apiKey": "OPENAI_API_KEY"
+    }
   }
 }

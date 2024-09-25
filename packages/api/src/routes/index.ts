@@ -1,8 +1,8 @@
 import { FastifyReply, FastifyRequest, RouteOptions } from 'fastify';
 
 const schema = {
-  description: 'Get the ping route',
-  tags: ['ping'],
+  description: 'Get the index route',
+  tags: ['index'],
   response: {
     200: {
       description: 'Successful response',
@@ -15,12 +15,12 @@ const schema = {
 };
 
 const routeHandler = async (_request: FastifyRequest, reply: FastifyReply) => {
-  return reply.code(200).send({ message: 'pong' });
+  return reply.redirect('/api/docs/json');
 };
 
-export const getPingRoute: RouteOptions = {
+export const indexRoute: RouteOptions = {
   method: 'GET',
-  url: '/ping',
+  url: '/api',
   handler: routeHandler,
   schema,
 };

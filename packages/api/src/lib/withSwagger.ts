@@ -43,7 +43,7 @@ export function withSwagger(server: FastifyInstance): FastifyInstance {
 
   logger.info('Registering Swagger UI');
   server.register(swaggerUi, {
-    routePrefix: '/docs',
+    routePrefix: '/api/docs',
     uiConfig: {
       docExpansion: 'list',
       deepLinking: false,
