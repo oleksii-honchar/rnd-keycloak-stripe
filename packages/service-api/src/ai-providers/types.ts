@@ -1,7 +1,7 @@
 type ObjectValues<T> = T[keyof T];
 
 export const AI_PROVIDERS = {
-  OPENAI: 'openai',
+  OPEN_AI: 'open-ai',
   ANTHROPIC: 'anthropic',
 } as const;
 

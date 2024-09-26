@@ -1,6 +1,8 @@
 import pino from 'pino';
 
-export function getLogger(name: string) {
+export type Logger = pino.Logger;
+
+export function getLogger(name: string): Logger {
   const base = pino({
     name,
   });

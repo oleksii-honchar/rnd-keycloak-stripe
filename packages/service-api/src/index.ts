@@ -34,7 +34,7 @@ declare module 'fastify' {
   }
 }
 
-const aiService = new AiServiceContext(defaultAiProvider as AiProviderType);
+const aiService = new AiServiceContext(defaultAiProvider as AiProviderType, { logger });
 server.decorate('aiService', aiService);
 
 // Conditionally attach Swagger if not in production

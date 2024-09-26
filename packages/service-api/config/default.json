@@ -14,6 +14,10 @@
     "open-ai": {
       "apiKey": "***",
       "default-model": "gpt-4o-mini"
+    },
+    "anthropic": {
+      "apiKey": "***",
+      "default-model": "claude-3.5-sonnet"
     }
   }
 }

@@ -13,16 +13,13 @@ const schema = {
     type: 'object',
     properties: {
       prompt: { type: 'string' },
-      model: { type: 'string' },
+      model: { type: 'string', nullable: true },
     },
   },
   response: {
     200: {
       description: 'Successful response',
-      type: 'object',
-      properties: {
-        message: { type: 'string' },
-      },
+      additionalProperties: true,
     },
   },
 };
