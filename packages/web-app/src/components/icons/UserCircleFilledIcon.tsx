@@ -1,12 +1,8 @@
-import React from "react";
-
 interface UserCircleFilledIconProps {
   className?: string;
 }
 
-export const UserCircleFilledIcon = ({
-  className = "",
-}: UserCircleFilledIconProps) => (
+export const UserCircleFilledIcon = ({ className = '' }: UserCircleFilledIconProps) => (
   <svg
     fill="none"
     viewBox="0 0 24 24"
@@ -22,13 +18,13 @@ export const UserCircleFilledIcon = ({
       strokeLinecap="round"
       strokeLinejoin="round"
       d="M 15 9.75 C 15 12.059 12.5 13.503 10.5 12.348 C 9.572 11.812 9 10.822 9 9.75 C 9 7.441 11.5 5.997 13.5 7.152 C 14.428 7.688 15 8.678 15 9.75 Z"
-      style={{ fill: "currentColor" }}
+      style={{ fill: 'currentColor' }}
     ></path>
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       d="M 17.981 18.725 C 16.335 20.193 14.206 21.003 12 21 C 9.794 21.003 7.664 20.193 6.018 18.725 M 17.982 18.725 C 16.56542041528107 16.849451431880215 14.350399029767141 15.74786643764869 12 15.75 C 9.649600970232859 15.74786643764869 7.434579584718925 16.849451431880215 6.018 18.725"
-      style={{ fill: "currentColor" }}
+      style={{ fill: 'currentColor' }}
     ></path>
     <path
       strokeLinecap="round"

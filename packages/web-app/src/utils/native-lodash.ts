@@ -8,14 +8,14 @@ function pick<T, K extends keyof T>(object: T, keys: K[]): Partial<T> {
 }
 
 function set<T>(object: T, path: string, value: unknown): void {
-  const keys = path.split(".");
+  const keys = path.split('.');
   let current: any = object;
 
   for (let i = 0; i < keys.length - 1; i++) {
     const key = keys[i];
     if (key !== undefined && !(key in current)) {
       // Check if the next key is a number
-      current[key] = /^\d+$/.test(keys[i + 1] ?? "") ? [] : {};
+      current[key] = /^\d+$/.test(keys[i + 1] ?? '') ? [] : {};
     }
     if (key !== undefined) {
       current = current[key];
@@ -35,29 +35,22 @@ function get<T, R>(obj: T, path: string, defaultValue?: R): R {
       .filter(Boolean)
       .reduce(
         (res, key) =>
-          res !== null && res !== undefined
-            ? (res as Record<string, any>)[key]
-            : res,
+          res !== null && res !== undefined ? (res as Record<string, any>)[key] : res,
         obj as object,
       );
   const result = travel(/[,[\]]+?/) || travel(/[,[\].]+?/);
-  return result !== undefined && result !== obj
-    ? (result as R)
-    : (defaultValue as R);
+  return result !== undefined && result !== obj ? (result as R) : (defaultValue as R);
 }
 
 function camelToKebab(camelCaseString: string): string {
-  return camelCaseString.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+  return camelCaseString.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
 function isObjectEmpty(obj: object): boolean {
   return Object.keys(obj).length === 0;
 }
 
-function omit<T extends object, K extends keyof T>(
-  object: T,
-  keys: K[],
-): Omit<T, K> {
+function omit<T extends object, K extends keyof T>(object: T, keys: K[]): Omit<T, K> {
   return Object.keys(object).reduce(
     (result, key) => {
       if (!keys.includes(key as K)) {

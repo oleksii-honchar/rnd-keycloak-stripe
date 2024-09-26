@@ -5,8 +5,8 @@
 			"path": "."
 		},
     {
-      "name": "📦 api",
-      "path": "packages/api"
+      "name": "📦 service-api",
+      "path": "packages/service-api"
     },
     {
       "name": "📦 web-app",
@@ -15,7 +15,7 @@
   ],
   "settings": {
     "conventionalCommits.scopes": [
-      "api",
+      "service-api",
       "web-app",
     ],
     "window.title": "${activeEditorShort}${separator}${rootName}",

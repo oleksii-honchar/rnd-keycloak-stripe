@@ -4,11 +4,7 @@ function hexToRgb(hex) {
 }
 
 function adjustColor([r, g, b], factor = 0.5) {
-  return [
-    Math.floor(r * factor),
-    Math.floor(g * factor),
-    Math.floor(b * factor),
-  ];
+  return [Math.floor(r * factor), Math.floor(g * factor), Math.floor(b * factor)];
 }
 
 function blendColors(color1, color2, factor) {
@@ -25,9 +21,9 @@ function generateNoiseBackground({
   graininess = 1,
   contrast = 128,
   grainSize = 1,
-  primaryColor = "#000000",
-  secondaryColor = "#FFFFFF",
-  tertiaryColor = "#808080",
+  primaryColor = '#000000',
+  secondaryColor = '#FFFFFF',
+  tertiaryColor = '#808080',
   ellipseCount = 10,
   minRadius = 50,
   minDistance = 100,
@@ -38,18 +34,18 @@ function generateNoiseBackground({
   postContrast = 100,
   postBrightness = 100,
 } = {}) {
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
   if (!ctx) {
-    throw new Error("Failed to get 2D context");
+    throw new Error('Failed to get 2D context');
   }
   canvas.width = width;
   canvas.height = height;
 
-  const ellipseCanvas = document.createElement("canvas");
-  const ellipseCtx = ellipseCanvas.getContext("2d");
+  const ellipseCanvas = document.createElement('canvas');
+  const ellipseCtx = ellipseCanvas.getContext('2d');
   if (!ellipseCtx) {
-    throw new Error("Failed to get 2D context for ellipses");
+    throw new Error('Failed to get 2D context for ellipses');
   }
   ellipseCanvas.width = width;
   ellipseCanvas.height = height;
@@ -92,23 +88,16 @@ function generateNoiseBackground({
     ellipseColors.push(startColor);
   }
 
-  ellipseCtx.filter = "blur(40px)";
+  ellipseCtx.filter = 'blur(40px)';
   ellipses.forEach(([x, y, rx, ry], index) => {
     const startColor = ellipseColors[index];
     const endColor = adjustColor(startColor, backgroundLightnessFactor);
 
-    const gradient = ellipseCtx.createRadialGradient(
-      x,
-      y,
-      0,
-      x,
-      y,
-      Math.max(rx, ry),
-    );
-    const gradientColor = `rgba(${startColor.join(",")}, ${ellipseStartAlpha})`;
+    const gradient = ellipseCtx.createRadialGradient(x, y, 0, x, y, Math.max(rx, ry));
+    const gradientColor = `rgba(${startColor.join(',')}, ${ellipseStartAlpha})`;
 
     gradient.addColorStop(0, gradientColor);
-    gradient.addColorStop(1, `rgba(${endColor.join(",")}, ${ellipseEndAlpha})`);
+    gradient.addColorStop(1, `rgba(${endColor.join(',')}, ${ellipseEndAlpha})`);
 
     ellipseCtx.fillStyle = gradient;
     ellipseCtx.beginPath();
@@ -168,16 +157,16 @@ function generateNoiseBackground({
 
   ctx.putImageData(imageData, 0, 0);
 
-  ctx.filter = "blur(20px)";
+  ctx.filter = 'blur(20px)';
   ellipses.forEach(([x, y, rx, ry], index) => {
     const startColor = ellipseColors[index];
     const endColor = adjustColor(startColor, backgroundLightnessFactor);
 
     const gradient = ctx.createRadialGradient(x, y, 0, x, y, Math.max(rx, ry));
-    const gradientColor = `rgba(${startColor.join(",")}, ${ellipseStartAlpha})`;
+    const gradientColor = `rgba(${startColor.join(',')}, ${ellipseStartAlpha})`;
 
     gradient.addColorStop(0, gradientColor);
-    gradient.addColorStop(1, `rgba(${endColor.join(",")}, ${ellipseEndAlpha})`);
+    gradient.addColorStop(1, `rgba(${endColor.join(',')}, ${ellipseEndAlpha})`);
 
     ctx.fillStyle = gradient;
     ctx.beginPath();
@@ -188,10 +177,10 @@ function generateNoiseBackground({
   ctx.filter = `contrast(${postContrast}%) brightness(${postBrightness}%)`;
   ctx.drawImage(canvas, 0, 0);
 
-  const dataURL = canvas.toDataURL("image/png");
+  const dataURL = canvas.toDataURL('image/png');
   document.body.style.background = `url(${dataURL})`;
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundRepeat = 'no-repeat';
+  document.body.style.backgroundSize = 'cover';
 
   return dataURL;
 }
@@ -203,9 +192,9 @@ function generate() {
     graininess: 0.6,
     contrast: 100,
     grainSize: 1,
-    primaryColor: "#576500",
-    secondaryColor: "#146d2f",
-    tertiaryColor: "#9a3f61",
+    primaryColor: '#576500',
+    secondaryColor: '#146d2f',
+    tertiaryColor: '#9a3f61',
     ellipseCount: 5,
     minRadius: 150,
     minDistance: 100,
@@ -217,8 +206,8 @@ function generate() {
     postBrightness: 100,
   });
 
-  const downloadLink = document.getElementById("download-link");
+  const downloadLink = document.getElementById('download-link');
   downloadLink.href = dataURL;
-  downloadLink.download = "noise-background.png";
-  downloadLink.style.display = "block";
+  downloadLink.download = 'noise-background.png';
+  downloadLink.style.display = 'block';
 }

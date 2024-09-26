@@ -1,6 +1,6 @@
-import { Logo } from "src/components/Logo";
-import { Title } from "src/components/Title";
-import { PageNavItems } from "./PageNavItems";
+import { Logo } from 'src/components/Logo';
+import { Title } from 'src/components/Title';
+import { PageNavItems } from './PageNavItems';
 
 export function PageNavbar() {
   return (

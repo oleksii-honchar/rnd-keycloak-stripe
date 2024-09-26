@@ -1,4 +1,4 @@
-export * from "./AppConfig.d.ts";
+export * from './AppConfig.d.ts';
 
 declare global {
   const PKG_NAME: string;
@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-declare module "*.css" {
+declare module '*.css' {
   interface IClassNames {
     [className: string]: string;
   }
@@ -17,7 +17,7 @@ declare module "*.css" {
   export = classNames;
 }
 
-declare module "@ciklum/logan";
+declare module '@ciklum/logan';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type StringIndex = Record<PropertyKey, any>;

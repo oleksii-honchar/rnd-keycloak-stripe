@@ -26,11 +26,7 @@ function hexToRgb(hex: string): RGB {
 }
 
 function adjustColor([r, g, b]: RGB, factor = 0.5): RGB {
-  return [
-    Math.floor(r * factor),
-    Math.floor(g * factor),
-    Math.floor(b * factor),
-  ];
+  return [Math.floor(r * factor), Math.floor(g * factor), Math.floor(b * factor)];
 }
 
 function blendColors(color1: RGB, color2: RGB, factor: number): RGB {
@@ -47,9 +43,9 @@ function generateNoiseBackground({
   graininess = 1,
   contrast = 128,
   grainSize = 1,
-  primaryColor = "#000000", // Default to black
-  secondaryColor = "#FFFFFF", // Default to white
-  tertiaryColor = "#808080", // Default to gray
+  primaryColor = '#000000', // Default to black
+  secondaryColor = '#FFFFFF', // Default to white
+  tertiaryColor = '#808080', // Default to gray
   ellipseCount = 10, // Number of ellipses
   minRadius = 50, // Minimum radius of ellipses
   minDistance = 100, // Minimum distance between ellipses
@@ -60,19 +56,19 @@ function generateNoiseBackground({
   postContrast = 100, // Post-processing contrast (percentage)
   postBrightness = 100, // Post-processing brightness (percentage)
 }: NoiseBackgroundParams = {}): void {
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
   if (!ctx) {
-    throw new Error("Failed to get 2D context");
+    throw new Error('Failed to get 2D context');
   }
   canvas.width = width;
   canvas.height = height;
 
   // Create a separate canvas for ellipses
-  const ellipseCanvas = document.createElement("canvas");
-  const ellipseCtx = ellipseCanvas.getContext("2d");
+  const ellipseCanvas = document.createElement('canvas');
+  const ellipseCtx = ellipseCanvas.getContext('2d');
   if (!ellipseCtx) {
-    throw new Error("Failed to get 2D context for ellipses");
+    throw new Error('Failed to get 2D context for ellipses');
   }
   ellipseCanvas.width = width;
   ellipseCanvas.height = height;
@@ -121,23 +117,16 @@ function generateNoiseBackground({
   }
 
   // Draw ellipses on the ellipse canvas
-  ellipseCtx.filter = "blur(40px)";
+  ellipseCtx.filter = 'blur(40px)';
   ellipses.forEach(([x, y, rx, ry], index) => {
     const startColor = ellipseColors[index];
     const endColor = adjustColor(startColor, backgroundLightnessFactor);
 
-    const gradient = ellipseCtx.createRadialGradient(
-      x,
-      y,
-      0,
-      x,
-      y,
-      Math.max(rx, ry),
-    );
-    const gradientColor = `rgba(${startColor.join(",")}, ${ellipseStartAlpha})`;
+    const gradient = ellipseCtx.createRadialGradient(x, y, 0, x, y, Math.max(rx, ry));
+    const gradientColor = `rgba(${startColor.join(',')}, ${ellipseStartAlpha})`;
 
     gradient.addColorStop(0, gradientColor);
-    gradient.addColorStop(1, `rgba(${endColor.join(",")}, ${ellipseEndAlpha})`);
+    gradient.addColorStop(1, `rgba(${endColor.join(',')}, ${ellipseEndAlpha})`);
 
     ellipseCtx.fillStyle = gradient;
     ellipseCtx.beginPath();
@@ -202,16 +191,16 @@ function generateNoiseBackground({
   ctx.putImageData(imageData, 0, 0);
 
   // Draw ellipses on the main canvas
-  ctx.filter = "blur(20px)";
+  ctx.filter = 'blur(20px)';
   ellipses.forEach(([x, y, rx, ry], index) => {
     const startColor = ellipseColors[index];
     const endColor = adjustColor(startColor, backgroundLightnessFactor);
 
     const gradient = ctx.createRadialGradient(x, y, 0, x, y, Math.max(rx, ry));
-    const gradientColor = `rgba(${startColor.join(",")}, ${ellipseStartAlpha})`;
+    const gradientColor = `rgba(${startColor.join(',')}, ${ellipseStartAlpha})`;
 
     gradient.addColorStop(0, gradientColor);
-    gradient.addColorStop(1, `rgba(${endColor.join(",")}, ${ellipseEndAlpha})`);
+    gradient.addColorStop(1, `rgba(${endColor.join(',')}, ${ellipseEndAlpha})`);
 
     ctx.fillStyle = gradient;
     ctx.beginPath();
@@ -224,10 +213,10 @@ function generateNoiseBackground({
   ctx.drawImage(canvas, 0, 0);
 
   // Convert canvas to data URL and set as background
-  const dataURL = canvas.toDataURL("image/png");
+  const dataURL = canvas.toDataURL('image/png');
   document.body.style.background = `url(${dataURL})`;
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundRepeat = 'no-repeat';
+  document.body.style.backgroundSize = 'cover';
 }
 
 export { generateNoiseBackground };

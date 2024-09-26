@@ -4,13 +4,13 @@ import pino from 'pino';
 
 import pkg from 'package.json';
 
-import { withSwagger } from 'src/lib/withSwagger';
 import { indexRoute } from 'src/routes';
+import { withSwagger } from 'src/utils/withSwagger';
 import { AiServiceContext } from './ai-providers';
 import { AiProviderType } from './ai-providers/types';
-import { errorHandler } from './lib/error-handler';
 import { generateTextRoute } from './routes/generate-text';
 import { pingRoute } from './routes/ping';
+import { errorHandler } from './utils/error-handler';
 
 const name = `${pkg.name}@${pkg.version}`;
 const logger = pino({

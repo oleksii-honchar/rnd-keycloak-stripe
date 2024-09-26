@@ -58,6 +58,7 @@ export default tseslint.config(
       "prettier/prettier": "error",
       "react/react-in-jsx-scope": "off",
       "react/no-unknown-property": ["error", { ignore: ["css"] }],
+      quotes: ["error", "single"],
     },
     settings: {
       react: {

@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { KeyCloakContext } from "src/contexts/KeyCloakContext";
+import { useContext, useEffect } from 'react';
+import { KeyCloakContext } from 'src/contexts/KeyCloakContext';
 
 export default function RestrictedPage() {
   const { keycloak } = useContext(KeyCloakContext);

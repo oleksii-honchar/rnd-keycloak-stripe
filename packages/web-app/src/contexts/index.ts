@@ -1,1 +1,1 @@
-export * from "./useAppConfig";
+export * from './useAppConfig';

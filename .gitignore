@@ -1,6 +1,5 @@
 .git
 .editorconfig
-.idea
 .DS_Store
 .npmrc
 .history
