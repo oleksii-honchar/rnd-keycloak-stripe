@@ -19,8 +19,8 @@ export class OpenAiService implements AiProvider {
     });
   }
 
-  async generateText(prompt: string, options?: PromptOptions): Promise<unknown> {
-    this.logger.info({ prompt, options }, 'generating text');
+  async createChatComplition(prompt: string, options?: PromptOptions): Promise<unknown> {
+    this.logger.info({ prompt, options }, 'Creating chat completion');
 
     const response = await this.openai.chat.completions.create({
       messages: [{ role: 'user', content: prompt }],

@@ -64,3 +64,7 @@ release-please-debug: ## debug release-please config
 		--repo-url=oleksii-honchar/fastify-tmpl \
 		--debug \
 		--dry-run
+
+generate-openapi-sdk:
+	rm -rf ./sdk
+	npx @openapitools/openapi-generator-cli generate -i http://localhost:8010/api/docs/json -g typescript-node -o ./sdk

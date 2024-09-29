@@ -1,5 +1,5 @@
 {
-  "name": "service-api",
+  "name": "@beaver/service-api",
   "version": "0.0.0",
   "description": "API service for Keycloak Stripe",
   "homepage": "https://github.com/oleksii-honchar/rnd-keycloak-stripe/blob/main/README.md",
@@ -54,6 +54,7 @@
     "@fastify/swagger": "^9.0.0",
     "@fastify/swagger-ui": "^5.0.1",
     "@openapitools/openapi-generator-cli": "^2.13.9",
+    "@sinclair/typebox": "catalog:",
     "@tsconfig/node22": "catalog:",
     "@tsconfig/recommended": "catalog:",
     "@types/eslint__js": "catalog:",

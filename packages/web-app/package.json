@@ -1,5 +1,5 @@
 {
-  "name": "web-app",
+  "name": "@beaver/web-app",
   "version": "0.0.0",
   "description": "",
   "license": "MIT",
@@ -34,6 +34,7 @@
     "pino": "catalog:"
   },
   "devDependencies": {
+    "@beaver/service-api": "workspace:*",
     "@emotion/eslint-plugin": "11.12.0",
     "@emotion/react": "11.13.3",
     "@emotion/styled": "11.13.0",

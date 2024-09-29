@@ -43,6 +43,6 @@ export class AiServiceContext {
   }
 
   async generateText(prompt: string, options?: PromptOptions): Promise<unknown> {
-    return this.provider.generateText(prompt, options); // Pass options parameter
+    return this.provider.createChatComplition(prompt, options); // Pass options parameter
   }
 }

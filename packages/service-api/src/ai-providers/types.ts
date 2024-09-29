@@ -12,5 +12,5 @@ export interface PromptOptions {
 export type AiProviderType = ObjectValues<typeof AI_PROVIDERS>;
 
 export interface AiProvider {
-  generateText(prompt: string, options?: PromptOptions): Promise<unknown>; // Added options parameter
+  createChatComplition(prompt: string, options?: PromptOptions): Promise<unknown>; // Added options parameter
 }

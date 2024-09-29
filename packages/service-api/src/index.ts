@@ -8,9 +8,15 @@ import { indexRoute } from 'src/routes';
 import { withSwagger } from 'src/utils/withSwagger';
 import { AiServiceContext } from './ai-providers';
 import { AiProviderType } from './ai-providers/types';
-import { generateTextRoute } from './routes/generate-text';
+import { chatCompletionRoute } from './routes/chat-complition';
 import { pingRoute } from './routes/ping';
 import { errorHandler } from './utils/error-handler';
+import { addResponseSchemas } from './utils/fastify-response-schemas';
+import { Logger } from './utils/getLogger';
+
+const runtimePort = config.get<number>('runtime.port');
+const runtimeEnvironment = config.get<string>('runtime.environment');
+const defaultAiProvider = config.get<string>('ai-providers.default');
 
 const name = `${pkg.name}@${pkg.version}`;
 const logger = pino({
@@ -24,9 +30,7 @@ const server: FastifyInstance = fastify({
   },
 });
 
-const runtimePort = config.get<number>('runtime.port');
-const runtimeEnvironment = config.get<string>('runtime.environment');
-const defaultAiProvider = config.get<string>('ai-providers.default');
+addResponseSchemas(server);
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -34,7 +38,9 @@ declare module 'fastify' {
   }
 }
 
-const aiService = new AiServiceContext(defaultAiProvider as AiProviderType, { logger });
+const aiService = new AiServiceContext(defaultAiProvider as AiProviderType, {
+  logger: server.log as Logger,
+});
 server.decorate('aiService', aiService);
 
 // Conditionally attach Swagger if not in production
@@ -46,7 +52,7 @@ if (runtimeEnvironment !== 'production') {
 server.register((app, options, done) => {
   server.route(indexRoute);
   server.route(pingRoute);
-  server.route(generateTextRoute);
+  server.route(chatCompletionRoute);
   done();
 });
 
@@ -60,7 +66,7 @@ server.setErrorHandler(errorHandler);
 
 server.listen(
   {
-    port: runtimePort, // Use runtimePort here
+    port: runtimePort,
     host: '0.0.0.0',
   },
   err => {
