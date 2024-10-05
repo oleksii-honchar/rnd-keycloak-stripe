@@ -3,6 +3,9 @@
     "containerName": "rnd-keycloak-stripe-api",
     "imageName": "tuiteraz/rnd-keycloak-stripe-api"
   },
+  "api-urls": {
+    "web-app": "http://localhost:8000"
+  },
   "runtime": {
     "environment": "development",
     "logLevel": "debug",

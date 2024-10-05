@@ -10,13 +10,6 @@
       "package.json": ["./package.json"]
     }
   },
-  "include": ["./src/*"],
-  "exclude": [
-    "./node_modules",
-    "./dist",
-    "./docs",
-    "./coverage",
-    "./ops",
-    "./scripts"
-  ]
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules", "./dist", "./docs", "./coverage", "./ops", "./scripts"]
 }

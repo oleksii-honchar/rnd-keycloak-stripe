@@ -29,3 +29,11 @@
 .theme-navbar-bg-scrolled {
   background-color: newColor; /* Your new background color when scrolled */
 }
+
+.theme-button-primary {
+  @apply bg-md-sys-light-primary text-md-sys-light-on-primary
+    hover:bg-md-sys-light-primary-container hover:text-md-sys-light-on-primary-container
+    active:bg-md-ref-pal-primary200  active:text-md-sys-light-on-primary-container
+    transition-colors duration-300 p-2
+    rounded-md min-h-8;
+}

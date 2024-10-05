@@ -4,6 +4,8 @@ import config from 'config';
 import { FastifyInstance } from 'fastify';
 import pino from 'pino';
 
+import pkg from 'package.json';
+
 const logger = pino({
   name: 'withSwagger',
 });
@@ -19,9 +21,9 @@ export function withSwagger(server: FastifyInstance): FastifyInstance {
     openapi: {
       openapi: '3.0.0',
       info: {
-        title: 'Test swagger',
+        title: pkg.name,
         description: 'testing the fastify swagger api',
-        version: '0.1.0',
+        version: pkg.version,
       },
       servers: [
         {

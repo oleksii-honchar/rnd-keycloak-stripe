@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { FastifyReply, FastifyRequest, RouteOptions } from 'fastify';
 
 const schema = {
@@ -15,7 +16,7 @@ const schema = {
 };
 
 const routeHandler = async (_request: FastifyRequest, reply: FastifyReply) => {
-  return reply.code(200).send({ message: 'pong' });
+  return reply.code(200).send({ message: `pong ${crypto.randomUUID()}` });
 };
 
 export const pingRoute: RouteOptions = {

@@ -63,6 +63,18 @@ function omit<T extends object, K extends keyof T>(object: T, keys: K[]): Omit<T
   );
 }
 
+const throttle = (func: (...args: any[]) => void, delay: number) => {
+  let timeoutId: NodeJS.Timeout | null = null;
+  return (...args: unknown[]) => {
+    if (timeoutId === null) {
+      timeoutId = setTimeout(() => {
+        func(...args);
+        timeoutId = null;
+      }, delay);
+    }
+  };
+};
+
 export const nl = {
   camelToKebab,
   get,
@@ -70,4 +82,5 @@ export const nl = {
   omit,
   pick,
   set,
+  throttle,
 };

@@ -57,6 +57,7 @@
     "@types/webpack-bundle-analyzer": "4.7.0",
     "@typescript-eslint/eslint-plugin": "^8.5.0",
     "@typescript-eslint/parser": "^8.5.0",
+    "axios": "catalog:",
     "classnames": "2.5.1",
     "compression-webpack-plugin": "11.1.0",
     "copy-webpack-plugin": "12.0.2",

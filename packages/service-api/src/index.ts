@@ -1,3 +1,4 @@
+import cors from '@fastify/cors';
 import config from 'config';
 import fastify, { FastifyInstance } from 'fastify';
 import pino from 'pino';
@@ -28,6 +29,10 @@ const server: FastifyInstance = fastify({
   logger: {
     name,
   },
+});
+
+server.register(cors, {
+  origin: [config.get<string>('api-urls.web-app')],
 });
 
 addResponseSchemas(server);

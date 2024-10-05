@@ -1,4 +1,7 @@
 {
+  "api-urls": {
+    "web-app": "https://web-app.olho.link"
+  },
   "runtime": {
     "logLevel": "error"
   }
