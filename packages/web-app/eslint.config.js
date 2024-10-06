@@ -1,25 +1,25 @@
-import * as eslintEmotion from "@emotion/eslint-plugin";
-import eslint from "@eslint/js";
-import eslintConfigPrettier from "eslint-config-prettier";
-import eslintPluginMarkdown from "eslint-plugin-markdown";
-import eslintPrettier from "eslint-plugin-prettier";
-import eslintReact from "eslint-plugin-react";
-import globals from "globals";
-import tseslint from "typescript-eslint";
+import * as eslintEmotion from '@emotion/eslint-plugin';
+import eslint from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintPluginMarkdown from 'eslint-plugin-markdown';
+import eslintPrettier from 'eslint-plugin-prettier';
+import eslintReact from 'eslint-plugin-react';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
     ignores: [
-      "**/.history/**",
-      "**/dist/**",
-      "**/node_modules/**",
-      "**/coverage/**",
-      "**/*.d.ts",
-      "**/*.js",
-      ".prettierrc.js",
-      "eslint.config.js",
-      "jest.config.js",
-      "package.json",
+      '**/.history/**',
+      '**/dist/**',
+      '**/node_modules/**',
+      '**/coverage/**',
+      '**/*.d.ts',
+      '**/*.js',
+      '.prettierrc.js',
+      'eslint.config.js',
+      'jest.config.js',
+      'package.json',
     ],
   },
   eslint.configs.recommended,
@@ -28,22 +28,22 @@ export default tseslint.config(
   eslintReact.configs.flat.recommended,
   eslintConfigPrettier,
   {
-    files: ["src/**/*.ts", "src/**/*.tsx", "config/**/*.ts"],
+    files: ['src/**/*.ts', 'src/**/*.tsx', 'config/**/*.ts'],
     plugins: {
-      "typescript-eslint": tseslint.plugin,
+      'typescript-eslint': tseslint.plugin,
       prettier: eslintPrettier,
       react: eslintReact,
-      "@emotion": eslintEmotion,
+      '@emotion': eslintEmotion,
     },
     languageOptions: {
       ...eslintReact.configs.flat.recommended.languageOptions,
-      ecmaVersion: "latest",
+      ecmaVersion: 'latest',
       parser: tseslint.parser,
       parserOptions: {
         project: true,
         jsx: true,
       },
-      sourceType: "module",
+      sourceType: 'module',
       globals: {
         ...globals.node,
         ...globals.jest,
@@ -51,26 +51,27 @@ export default tseslint.config(
       },
     },
     rules: {
-      "@emotion/jsx-import": "error",
-      "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/no-unused-expressions": "warn",
-      "no-unused-expressions": "off",
-      "prettier/prettier": "error",
-      "react/react-in-jsx-scope": "off",
-      "react/no-unknown-property": ["error", { ignore: ["css"] }],
-      quotes: ["error", "single"],
+      '@emotion/jsx-import': 'error',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-expressions': 'warn',
+      'no-unused-expressions': 'off',
+      'prettier/prettier': 'error',
+      'react/react-in-jsx-scope': 'off',
+      'react/no-unknown-property': ['error', { ignore: ['css'] }],
+      quotes: ['error', 'single'],
+      'object-curly-spacing': ['error', 'always', { objectsInObjects: false }],
     },
     settings: {
       react: {
-        version: "18",
+        version: '18',
       },
     },
   },
   {
-    files: ["**/*.md"],
+    files: ['**/*.md'],
     plugins: {
       markdown: eslintPluginMarkdown,
     },
-    processor: "markdown/markdown",
+    processor: 'markdown/markdown',
   },
 );

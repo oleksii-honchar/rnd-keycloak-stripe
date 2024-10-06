@@ -1,6 +1,6 @@
-import { Type } from '@sinclair/typebox';
+import { Static, Type } from '@sinclair/typebox';
 
-export const ChatCompletionResponseSchema = Type.Object({
+export const chatCompletionResponseSchema = Type.Object({
   id: Type.String(),
   object: Type.Literal('chat.completion'),
   created: Type.Integer(),
@@ -27,3 +27,5 @@ export const ChatCompletionResponseSchema = Type.Object({
   }),
   system_fingerprint: Type.String(),
 });
+
+export type ChatCompletionResponse = Static<typeof chatCompletionResponseSchema>;

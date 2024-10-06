@@ -1,4 +1,7 @@
 {
+  "api-urls": {
+    "service-api": "http://localhost:8010"
+  },
   "deployment": {
     "containerName": "rnd-keycloak-stripe-app",
     "imageName": "tuiteraz/rnd-keycloak-stripe-app"

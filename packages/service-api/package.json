@@ -9,8 +9,8 @@
   "repository": "https://github.com/oleksii-honchar/rnd-keycloak-stripe",
   "license": "MIT",
   "author": "Oleksii Honchar <tuiteraz@gmail.com>",
-  "main": "dist/src/sdk/api.js",
-  "types": "dist/src/sdk/api.d.ts",
+  "main": "dist/src/sdk/index.js",
+  "types": "dist/src/sdk/index.d.ts",
   "scripts": {
     "build": "pnpm clean:dist && pnpm ts:build",
     "ci": "pnpm code:check && pnpm test && pnpm ts:build",

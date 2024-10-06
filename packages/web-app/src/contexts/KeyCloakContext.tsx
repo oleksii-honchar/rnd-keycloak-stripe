@@ -1,8 +1,8 @@
-import Keycloak from "keycloak-js";
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { getLogger } from "src/utils/getLogger";
+import Keycloak from 'keycloak-js';
+import { createContext, ReactNode, useEffect, useState } from 'react';
+import { getLogger } from 'src/utils/getLogger';
 
-const logger = getLogger("KeyCloakContext");
+const logger = getLogger('KeyCloakContext');
 
 let keycloak: Keycloak | null = null; // Initialize as null
 
@@ -35,20 +35,20 @@ export const KeyCloakContextProvider = ({
     keycloak = new Keycloak(config);
     keycloak
       .init({
-        onLoad: "check-sso",
+        onLoad: 'check-sso',
         silentCheckSsoRedirectUri:
-          window.location.origin + "/assets/silent-check-sso.html",
+          window.location.origin + '/assets/silent-check-sso.html',
       })
-      .then((auth) => {
+      .then(auth => {
         setKeycloakInitialized(true);
         if (auth) {
-          logger.info("User is authenticated");
+          logger.info('User is authenticated');
         } else {
-          logger.warn("User is not authenticated");
+          logger.warn('User is not authenticated');
         }
       })
       .catch(() => {
-        logger.error("Failed to initialize Keycloak");
+        logger.error('Failed to initialize Keycloak');
       });
   }, []);
 

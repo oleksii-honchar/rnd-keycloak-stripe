@@ -7,7 +7,7 @@ import {
   RouteHandlerMethod,
   RouteOptions,
 } from 'fastify';
-import { ChatCompletionResponseSchema } from 'src/types';
+import { chatCompletionResponseSchema } from 'src/types';
 
 const schema = {
   description: 'Create a chat completion',
@@ -17,7 +17,10 @@ const schema = {
     model: Type.Optional(Type.String()),
   }),
   response: {
-    200: ChatCompletionResponseSchema,
+    200: {
+      description: 'Successful chat completion response',
+      ...chatCompletionResponseSchema,
+    },
     400: { $ref: 'badRequestResponse#' },
     401: { $ref: 'notAuthorizedResponse#' },
     500: { $ref: 'errorResponse#' },

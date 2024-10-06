@@ -11,7 +11,7 @@ export class HttpError extends ErrorWithData {
   constructor(
     public statusCode: number, // fastify natively supports statusCode
     message: string,
-    public data?: unknown,
+    data?: unknown,
   ) {
     super(message, data);
     this.name = 'HttpError';
@@ -32,6 +32,13 @@ export class BadRequestError extends HttpError {
   }
 }
 
+export class UnauthorizedError extends HttpError {
+  constructor(message: string, data?: unknown) {
+    super(401, message, data);
+    this.name = 'UnauthorizedError';
+  }
+}
+
 export class NotFoundError extends HttpError {
   constructor(message: string, data?: unknown) {
     super(404, message, data);
@@ -39,9 +46,9 @@ export class NotFoundError extends HttpError {
   }
 }
 
-export class InternalRequestError extends HttpError {
+export class InternalServerError extends HttpError {
   constructor(message: string, data?: unknown) {
     super(500, message, data);
-    this.name = 'InternalRequestError';
+    this.name = 'InternalServerError';
   }
 }

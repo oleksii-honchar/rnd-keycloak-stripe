@@ -1,16 +1,15 @@
 import crypto from 'crypto';
 import { FastifyReply, FastifyRequest, RouteOptions } from 'fastify';
 
+import { pingResponseSchema } from 'src/types';
+
 const schema = {
   description: 'Get the ping route',
   tags: ['ping'],
   response: {
     200: {
-      description: 'Successful response',
-      type: 'object',
-      properties: {
-        message: { type: 'string' },
-      },
+      description: 'Successful ping response',
+      ...pingResponseSchema,
     },
   },
 };
