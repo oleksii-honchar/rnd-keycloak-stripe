@@ -1,11 +1,18 @@
 {
   "runtime": {
     "environment": "NODE_ENV",
-    "host": "API_HOST"
+    "host": "API_HOST",
+    "logLevel": "LOG_LEVEL"
   },
   "ai-providers": {
     "open-ai": {
       "apiKey": "OPENAI_API_KEY"
     }
+  },
+  "keycloak": {
+    "realm": "KEYCLOAK_REALM",
+    "authServerUrl": "KEYCLOAK_URL",
+    "clientId": "KEYCLOAK_SERVICE_ID",
+    "clientSecret": "KEYCLOAK_SERVICE_SECRET"
   }
 }

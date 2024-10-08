@@ -22,5 +22,11 @@
       "apiKey": "***",
       "default-model": "claude-3.5-sonnet"
     }
+  },
+  "keycloak": {
+    "realm": "***",
+    "authServerUrl": "***",
+    "clientId": "***",
+    "clientSecret": "***"
   }
 }

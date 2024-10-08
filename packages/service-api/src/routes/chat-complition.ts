@@ -7,6 +7,7 @@ import {
   RouteHandlerMethod,
   RouteOptions,
 } from 'fastify';
+import { FastifyInstance } from 'fastify/types/instance';
 import { chatCompletionResponseSchema } from 'src/types';
 
 const schema = {
@@ -41,9 +42,10 @@ const routeHandler: RouteHandler<ChatCompletionRoute> = async function (
   return reply.code(200).send(response);
 };
 
-export const chatCompletionRoute: RouteOptions = {
+export const getChatCompletionRoute = (server: FastifyInstance): RouteOptions => ({
   method: 'POST',
   url: '/api/chat-completion',
   handler: routeHandler as RouteHandlerMethod,
+  preHandler: server.authenticate(),
   schema,
-};
+});

@@ -5,13 +5,14 @@ import pino from 'pino';
 
 import pkg from 'package.json';
 
-import { indexRoute } from 'src/routes';
+import { getIndexRoute } from 'src/routes';
 import { withSwagger } from 'src/utils/withSwagger';
 import { AiServiceContext } from './ai-providers';
 import { AiProviderType } from './ai-providers/types';
-import { chatCompletionRoute } from './routes/chat-complition';
-import { pingRoute } from './routes/ping';
+import { getChatCompletionRoute } from './routes/chat-complition';
+import { getPingRoute } from './routes/ping';
 import { errorHandler } from './utils/error-handler';
+import fastifyKeycloak from './utils/fastify-keycloak';
 import { addResponseSchemas } from './utils/fastify-response-schemas';
 import { Logger } from './utils/getLogger';
 
@@ -28,11 +29,19 @@ logger.info('Starting app');
 const server: FastifyInstance = fastify({
   logger: {
     name,
+    level: config.get<string>('runtime.logLevel'),
   },
 });
 
 server.register(cors, {
   origin: [config.get<string>('api-urls.web-app')],
+});
+
+server.register(fastifyKeycloak, {
+  realm: config.get<string>('keycloak.realm'),
+  authServerUrl: config.get<string>('keycloak.authServerUrl'),
+  clientId: config.get<string>('keycloak.clientId'),
+  clientSecret: config.get<string>('keycloak.clientSecret'),
 });
 
 addResponseSchemas(server);
@@ -54,10 +63,10 @@ if (runtimeEnvironment !== 'production') {
 }
 
 // Routes should be registered BEFORE swagger initialization
-server.register((app, options, done) => {
-  server.route(indexRoute);
-  server.route(pingRoute);
-  server.route(chatCompletionRoute);
+server.register((_app, _options, done) => {
+  server.route(getIndexRoute(server));
+  server.route(getPingRoute(server));
+  server.route(getChatCompletionRoute(server));
   done();
 });
 
