@@ -5,8 +5,13 @@
     "test"
   ],
   "verbose": true,
-  "execMap": {
-    "ts": "node -r ts-node/register -r tsconfig-paths/register"
-  },
-  "ext": "js json ts"
+  "ext": "js json ts",
+  "watch": [
+    "src"
+  ],
+  "exec": "pnpm ts-node",
+  "events": {
+    "start": "pnpm build:sdk",
+    "restart": "pnpm build:sdk"
+  }
 }

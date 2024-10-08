@@ -6,10 +6,14 @@ import { HttpClient } from './http-client';
 export type { ChatCompletionResponse, PingResponse };
 
 export class ServiceSDK {
-  constructor(private readonly httpClient: HttpClient) { }
+  private readonly httpClient: HttpClient;
+
+  constructor(httpClient: HttpClient) {
+    this.httpClient = httpClient;
+  }
 
   chatCompletions = {
-    get: async (prompt: string): Promise<ChatCompletionResponse> =>
+    create: async (prompt: string): Promise<ChatCompletionResponse> =>
       this.httpClient.post<ChatCompletionResponse>('/api/chat-completion', {
         prompt,
       }),

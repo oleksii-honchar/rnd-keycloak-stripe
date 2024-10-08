@@ -40,7 +40,6 @@ module.exports = tseslint.config(
     },
     rules: {
       'prettier/prettier': 'error',
-      'object-curly-spacing': 'off',
     },
   },
   {
