@@ -9,11 +9,13 @@ let keycloak: Keycloak | null = null; // Initialize as null
 interface KeyCloakContextProps {
   keycloakInitialized: boolean;
   keycloak: Keycloak | null;
+  getToken: () => Promise<string | undefined>;
 }
 
 export const KeyCloakContext = createContext<KeyCloakContextProps>({
   keycloakInitialized: false,
   keycloak: null,
+  getToken: () => Promise.resolve(undefined),
 });
 
 interface KeyCloakContextProviderProps {
@@ -52,8 +54,21 @@ export const KeyCloakContextProvider = ({
       });
   }, []);
 
+  const getToken = async () => {
+    if (keycloak) {
+      try {
+        await keycloak.updateToken(30); // Refresh token if it's about to expire
+        return keycloak.token;
+      } catch (error) {
+        logger.error('Failed to refresh token', error);
+        return undefined;
+      }
+    }
+    return undefined;
+  };
+
   return (
-    <KeyCloakContext.Provider value={{ keycloakInitialized, keycloak }}>
+    <KeyCloakContext.Provider value={{ keycloakInitialized, keycloak, getToken }}>
       {children}
     </KeyCloakContext.Provider>
   );

@@ -11,7 +11,7 @@
   },
   "keycloak": {
     "realm": "KEYCLOAK_REALM",
-    "authServerUrl": "KEYCLOAK_URL",
+    "authServerUrl": "KEYCLOAK_BASE_URL",
     "clientId": "KEYCLOAK_SERVICE_ID",
     "clientSecret": "KEYCLOAK_SERVICE_SECRET"
   }

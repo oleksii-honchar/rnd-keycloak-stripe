@@ -13,9 +13,9 @@ const say = async (prompt: string) => {
   return result?.choices[0]?.message.content;
 };
 
-const ping = async () => {
+const ping = async (authContext: string) => {
   logger.info('ping');
-  const result: PingResponse = await serviceSDK.ping.get();
+  const result: PingResponse = await serviceSDK.ping.get(authContext);
   return result.message;
 };
 

@@ -1,12 +1,13 @@
 import { Button } from '@headlessui/react';
-import { useState } from 'react';
+import { KeyCloakContext } from 'contexts/KeyCloakContext';
+import { useContext, useState } from 'react';
 import { textCompletionService } from 'services/text-completion-service';
 
 const { ping } = textCompletionService;
 
 export const PingPong = () => {
   const [response, setResponse] = useState<string>('...');
-
+  const { getToken } = useContext(KeyCloakContext);
   return (
     <div
       className={`
@@ -20,7 +21,8 @@ export const PingPong = () => {
           theme-button-primary w-20
         `}
           onClick={async () => {
-            const result = await ping();
+            const token = await getToken();
+            const result = await ping(token as string);
             setResponse(result);
           }}
         >

@@ -1,6 +1,8 @@
+import axios from 'axios';
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import fp from 'fastify-plugin';
-import jwt from 'jsonwebtoken';
+import qs from 'querystring';
+
 import { UnauthorizedError } from './errors';
 
 interface KeycloakOptions {
@@ -10,54 +12,29 @@ interface KeycloakOptions {
   clientSecret: string;
 }
 
-interface DecodedToken {
-  exp: number;
-  [key: string]: unknown;
-}
-
 declare module 'fastify' {
   interface FastifyInstance {
     authenticate: () => (request: FastifyRequest, reply: FastifyReply) => Promise<void>;
   }
 }
 
-async function verifyToken(token: string, publicKey: string): Promise<DecodedToken> {
-  return new Promise((resolve, reject) => {
-    jwt.verify(token, publicKey, { algorithms: ['RS256'] }, (err, decoded) => {
-      if (err) reject(err);
-      else resolve(decoded as DecodedToken);
-    });
-  });
-}
-
-function fastifyKeycloak(
+const fastifyKeycloak = (
   fastify: FastifyInstance,
   options: KeycloakOptions,
-  done: (error?: Error) => void,
-) {
-  let publicKey: string;
+  done: (err?: Error) => void,
+) => {
   const logger = fastify.log.child({ module: 'keycloak-adapter' });
 
-  const url = `${options.authServerUrl}/realms/${options.realm}/protocol/openid-connect/certs`;
-  logger.debug({ url }, 'Fetching public key from Keycloak');
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      publicKey = `-----BEGIN PUBLIC KEY-----\n${data.keys[0].x5c[0]}\n-----END PUBLIC KEY-----`;
-    })
-    .catch(error => {
-      logger.error('Failed to fetch public key:', error);
-      done(error);
-    });
+  const introspectionUrl = new URL(
+    `${options.authServerUrl}/realms/${options.realm}/protocol/openid-connect/token/introspect`,
+  );
 
   fastify.decorate('authenticate', () => {
-    return async (request: FastifyRequest, reply: FastifyReply) => {
+    return async (request: FastifyRequest) => {
       const authHeader = request.headers.authorization;
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
         throw new UnauthorizedError('No token provided');
       }
-
-      logger.debug({ authHeader }, 'Looking for token');
 
       const token = authHeader.split(' ')[1];
 
@@ -66,45 +43,39 @@ function fastifyKeycloak(
       }
 
       try {
-        logger.debug({ token }, 'Verifying token');
-        const decoded = await verifyToken(token, publicKey);
+        logger.debug({ token }, 'Introspecting token');
+        const response = await axios.post(
+          introspectionUrl.toString(),
+          qs.stringify({
+            token,
+            client_id: options.clientId,
+            client_secret: options.clientSecret,
+          }),
+          {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          },
+        );
 
-        // Check if token is about to expire (e.g., in less than 5 minutes)
-        const now = Math.floor(Date.now() / 1000);
-        if (decoded.exp - now < 300) {
-          logger.debug({ token }, 'Refreshing token');
-          const response = await fetch(
-            `${options.authServerUrl}/realms/${options.realm}/protocol/openid-connect/token`,
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              body: new URLSearchParams({
-                grant_type: 'refresh_token',
-                client_id: options.clientId,
-                client_secret: options.clientSecret,
-                refresh_token: token,
-              }),
-            },
-          );
+        const introspectionResult = response.data;
 
-          if (response.ok) {
-            logger.debug({ response }, 'Refreshed token');
-            const data = await response.json();
-            reply.header('Authorization', `Bearer ${data.access_token}`);
-          } else {
-            logger.error('Failed to refresh token:', await response.text());
-          }
+        if (!introspectionResult.active) {
+          throw new UnauthorizedError('Token is not active');
         }
 
-        // Token is valid, continue to the route handler
+        // Token is valid, you can add additional checks here if needed
+        // For example, checking specific roles or permissions
+
+        // Optionally, you can attach the introspection result to the request
+        // for use in subsequent handlers
+        // request.user = introspectionResult;
       } catch (error) {
+        logger.error('Authentication error:', error);
         throw new UnauthorizedError('Authentication error', error);
       }
     };
   });
-
   done();
-}
+};
 
 export default fp(fastifyKeycloak, {
   name: 'fastify-keycloak',

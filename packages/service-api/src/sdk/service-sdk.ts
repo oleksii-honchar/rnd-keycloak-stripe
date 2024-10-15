@@ -20,8 +20,12 @@ export class ServiceSDK {
   };
 
   ping = {
-    get: async (): Promise<PingResponse> =>
-      this.httpClient.get<PingResponse>('/api/ping'),
+    get: async (authContext: string): Promise<PingResponse> =>
+      this.httpClient.get<PingResponse>('/api/ping', {
+        headers: {
+          Authorization: `Bearer ${authContext}`,
+        },
+      }),
   };
 }
 

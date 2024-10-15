@@ -64,6 +64,7 @@ rndRealmConfig.smtpServer.from = process.env.SMTP_REPLY_TO;
 rndRealmConfig.attributes['frontendUrl'] = process.env.KEYCLOAK_FRONTEND_URL;
 rndRealmConfig.identityProviders[0].config.clientId = process.env.GCP_OAUTH_CLIENT_ID;
 rndRealmConfig.identityProviders[0].config.clientSecret = process.env.GCP_OAUTH_CLIENT_SECRET;
+// rndRealmConfig.clients[1].clientSecret = process.env.KEYCLOAK_SERVICE_SECRET;
 
 masterRealmConfig.smtpServer.host = smtpHost;
 masterRealmConfig.smtpServer.user = process.env.SMTP_USER;
