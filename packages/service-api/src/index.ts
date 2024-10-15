@@ -40,8 +40,6 @@ server.register(cors, {
 server.register(fastifyKeycloak, {
   realm: config.get<string>('keycloak.realm'),
   authServerUrl: config.get<string>('keycloak.authServerUrl'),
-  clientId: config.get<string>('keycloak.clientId'),
-  clientSecret: config.get<string>('keycloak.clientSecret'),
 });
 
 addResponseSchemas(server);

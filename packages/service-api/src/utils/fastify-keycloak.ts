@@ -1,20 +1,22 @@
 import axios from 'axios';
+import crypto from 'crypto';
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import fp from 'fastify-plugin';
-import qs from 'querystring';
+import jwt from 'jsonwebtoken';
 
 import { UnauthorizedError } from './errors';
 
 interface KeycloakOptions {
   realm: string;
   authServerUrl: string;
-  clientId: string;
-  clientSecret: string;
 }
 
 declare module 'fastify' {
   interface FastifyInstance {
     authenticate: () => (request: FastifyRequest, reply: FastifyReply) => Promise<void>;
+  }
+  interface FastifyRequest {
+    user?: jwt.JwtPayload | string;
   }
 }
 
@@ -25,9 +27,37 @@ const fastifyKeycloak = (
 ) => {
   const logger = fastify.log.child({ module: 'keycloak-adapter' });
 
-  const introspectionUrl = new URL(
-    `${options.authServerUrl}/realms/${options.realm}/protocol/openid-connect/token/introspect`,
-  );
+  let publicKey: string;
+
+  const fetchPublicKey = async () => {
+    const keysUrl = `${options.authServerUrl}/realms/${options.realm}/protocol/openid-connect/certs`;
+    logger.debug({ keysUrl }, 'Fetching public key');
+    const response = await axios.get(keysUrl);
+    const rs256Key = response.data.keys.find(
+      (key: Record<string, string>) => key.alg === 'RS256',
+    );
+    if (!rs256Key) {
+      throw new Error('No RS256 key found in Keycloak certs');
+    }
+
+    const modulus = Buffer.from(rs256Key.n, 'base64url');
+    const exponent = Buffer.from(rs256Key.e, 'base64url');
+
+    const publicKeyObject = crypto.createPublicKey({
+      key: {
+        kty: 'RSA',
+        n: modulus.toString('base64'),
+        e: exponent.toString('base64'),
+      },
+      format: 'jwk',
+    });
+
+    publicKey = publicKeyObject.export({ type: 'spki', format: 'pem' }).toString();
+    logger.debug({ publicKey }, 'Public key fetched and converted to PEM');
+  };
+
+  fetchPublicKey();
+  setInterval(fetchPublicKey, 1000 * 60 * 60); // 1 hour
 
   fastify.decorate('authenticate', () => {
     return async (request: FastifyRequest) => {
@@ -43,31 +73,15 @@ const fastifyKeycloak = (
       }
 
       try {
-        logger.debug({ token }, 'Introspecting token');
-        const response = await axios.post(
-          introspectionUrl.toString(),
-          qs.stringify({
-            token,
-            client_id: options.clientId,
-            client_secret: options.clientSecret,
-          }),
-          {
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          },
-        );
-
-        const introspectionResult = response.data;
-
-        if (!introspectionResult.active) {
-          throw new UnauthorizedError('Token is not active');
+        if (!publicKey) {
+          await fetchPublicKey();
         }
 
-        // Token is valid, you can add additional checks here if needed
-        // For example, checking specific roles or permissions
+        logger.debug('Verifying token');
+        const decoded = jwt.verify(token, publicKey, { algorithms: ['RS256'] });
+        logger.debug({ decoded }, 'Token verified');
 
-        // Optionally, you can attach the introspection result to the request
-        // for use in subsequent handlers
-        // request.user = introspectionResult;
+        request.user = decoded;
       } catch (error) {
         logger.error('Authentication error:', error);
         throw new UnauthorizedError('Authentication error', error);
