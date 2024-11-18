@@ -1,30 +1,14 @@
 import * as eslintEmotion from '@emotion/eslint-plugin';
-import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import eslintPluginMarkdown from 'eslint-plugin-markdown';
 import eslintPrettier from 'eslint-plugin-prettier';
 import eslintReact from 'eslint-plugin-react';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
+import eslintConfigBase from '../../eslint.config';
+
 export default tseslint.config(
-  {
-    ignores: [
-      '**/.history/**',
-      '**/dist/**',
-      '**/node_modules/**',
-      '**/coverage/**',
-      '**/*.d.ts',
-      '**/*.js',
-      '.prettierrc.js',
-      'eslint.config.js',
-      'jest.config.js',
-      'package.json',
-    ],
-  },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.stylistic,
+  ...eslintConfigBase,
   eslintReact.configs.flat.recommended,
   eslintConfigPrettier,
   {
@@ -66,12 +50,5 @@ export default tseslint.config(
         version: '18',
       },
     },
-  },
-  {
-    files: ['**/*.md'],
-    plugins: {
-      markdown: eslintPluginMarkdown,
-    },
-    processor: 'markdown/markdown',
   },
 );
