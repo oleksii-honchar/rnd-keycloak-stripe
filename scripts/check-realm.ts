@@ -2,8 +2,8 @@
 // Env vars will be provided by make
 // This script will be able to access server if user:pwd = admin:admin (check docker-compose.yml)
 
-import { readFileSync } from 'node:fs';
 import { request } from 'http';
+import { readFileSync } from 'node:fs';
 import pino from 'pino';
 
 const logger = pino({ level: 'info', name: 'check-realm' });
@@ -11,13 +11,17 @@ const logger = pino({ level: 'info', name: 'check-realm' });
 import KcAdminClient from '@keycloak/keycloak-admin-client';
 import type { Credentials } from '@keycloak/keycloak-admin-client/lib/utils/auth.d.ts';
 
-async function waitForKeycloak(baseUrl: string, maxAttempts = 12, delay = 5000): Promise<void> {
+async function waitForKeycloak(
+  baseUrl: string,
+  maxAttempts = 12,
+  delay = 5000,
+): Promise<void> {
   const url = new URL('/admin/master/console/', baseUrl);
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     try {
       await new Promise<void>((resolve, reject) => {
-        const req = request(url, (res) => {
+        const req = request(url, res => {
           if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
             logger.info('Keycloak is ready!');
             resolve();
@@ -29,7 +33,7 @@ async function waitForKeycloak(baseUrl: string, maxAttempts = 12, delay = 5000):
         req.end();
       });
       return;
-    } catch (error) {
+    } catch {
       logger.info('Waiting for Keycloak to start...');
     }
     await new Promise(resolve => setTimeout(resolve, delay));
@@ -49,8 +53,12 @@ const adminClientConfig = {
   clientId: 'admin-cli',
 };
 
-const rndRealmConfig = JSON.parse(readFileSync(new URL('./rnd-realm.json', import.meta.url), 'utf8'));
-const masterRealmConfig = JSON.parse(readFileSync(new URL('./master-realm.json', import.meta.url), 'utf8'));
+const rndRealmConfig = JSON.parse(
+  readFileSync(new URL('./rnd-realm.json', import.meta.url), 'utf8'),
+);
+const masterRealmConfig = JSON.parse(
+  readFileSync(new URL('./master-realm.json', import.meta.url), 'utf8'),
+);
 
 // since SMTP-HOST stored globbaly in the system with port ¯\(ツ)/¯
 const smtpHost = process.env.SMTP_HOST ? process.env.SMTP_HOST.split(':')[0] : '';
@@ -63,7 +71,8 @@ rndRealmConfig.smtpServer.replyTo = process.env.SMTP_REPLY_TO;
 rndRealmConfig.smtpServer.from = process.env.SMTP_REPLY_TO;
 rndRealmConfig.attributes['frontendUrl'] = process.env.KEYCLOAK_FRONTEND_URL;
 rndRealmConfig.identityProviders[0].config.clientId = process.env.GCP_OAUTH_CLIENT_ID;
-rndRealmConfig.identityProviders[0].config.clientSecret = process.env.GCP_OAUTH_CLIENT_SECRET;
+rndRealmConfig.identityProviders[0].config.clientSecret =
+  process.env.GCP_OAUTH_CLIENT_SECRET;
 // rndRealmConfig.clients[1].clientSecret = process.env.KEYCLOAK_SERVICE_SECRET;
 
 masterRealmConfig.smtpServer.host = smtpHost;
@@ -76,8 +85,20 @@ masterRealmConfig.attributes['frontendUrl'] = process.env.KEYCLOAK_FRONTEND_URL;
 const adminClient = new KcAdminClient(adminClientConfig);
 await adminClient.auth(adminClientConfig as Credentials);
 
-// creating realm
-await adminClient.realms.create(rndRealmConfig);
+// creating or updating 'rnd' realm
+const existingRndRealm = await adminClient.realms.findOne({
+  realm: rndRealmConfig.realm,
+});
+
+if (existingRndRealm) {
+  logger.info(`Realm '${rndRealmConfig.realm}' already exists. Updating...`);
+  await adminClient.realms.update({ realm: rndRealmConfig.realm }, rndRealmConfig);
+  logger.info(`Realm '${rndRealmConfig.realm}' updated successfully.`);
+} else {
+  logger.info(`Creating realm '${rndRealmConfig.realm}'...`);
+  await adminClient.realms.create(rndRealmConfig);
+  logger.info(`Realm '${rndRealmConfig.realm}' created successfully.`);
+}
 
 // Update admin email
 const users = await adminClient.users.find({ realm: adminClientConfig.realmName });
@@ -87,19 +108,17 @@ logger.info('Updating admin email ...');
 
 if (adminUser) {
   await adminClient.users.update(
-    // @ts-expect-error
+    // @ts-expect-error - adminUser.id is not defined
     { id: adminUser.id, realm: adminClientConfig.realmName },
     {
       email: process.env.KEYCLOAK_ADMIN_EMAIL || 'default_admin@example.com',
-      emailVerified: true
-    }
+      emailVerified: true,
+    },
   );
 }
-logger.info(`Realm ${rndRealmConfig.realm} created successfully.`);
 
 logger.info('Updating master realm ...');
-// @ts-expect-error
-const masterRealm = await adminClient.realms.find({ realm: 'master' });
+const masterRealm = await adminClient.realms.findOne({ realm: 'master' });
 if (masterRealm) {
   await adminClient.realms.update({ realm: 'master' }, masterRealmConfig);
 }

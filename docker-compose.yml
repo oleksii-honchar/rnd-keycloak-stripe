@@ -1,6 +1,6 @@
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    image: quay.io/keycloak/keycloak:26.2.5
     container_name: keycloak
     environment:
       - TZ=Europe/Madrid
@@ -10,4 +10,4 @@ services:
       - JAVA_OPTS=-Dkeycloak.socket-bindings.https.max-queued-requests=$KEYCLOAK_MAX_QUEUED_REQUESTS
     ports:
       - '8100:8080'
-    command: start-dev --hostname=$KEYCLOAK_FRONTEND_URL --hostname-backchannel-dynamic=true --metrics-enabled=true --http-metrics-histograms-enabled=true --log-level=info --proxy-headers=forwarded --http-enabled=true --hostname=http://0.0.0.0 --hostname-strict=false
+    command: start-dev --hostname=$KEYCLOAK_FRONTEND_URL --hostname-backchannel-dynamic=true --metrics-enabled=true --http-metrics-histograms-enabled=true --log-level=info --proxy-headers=forwarded --http-enabled=true  --hostname-strict=false --hostname=http://0.0.0.0
